@@ -102,7 +102,6 @@
     usbutils # lsusb
     mpv
     gitui
-    bluez
   ];
 
   # 启用 starship，这是一个漂亮的 shell 提示符

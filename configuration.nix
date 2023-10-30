@@ -155,4 +155,6 @@
   boot.supportedFilesystems = [ "ntfs" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.fish.enable = true;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true;
 }
