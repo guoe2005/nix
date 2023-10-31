@@ -118,7 +118,7 @@
 
   # alacritty - 一个跨平台终端，带 GPU 加速功能
   programs.alacritty = {
-    enable = true;
+    enable = false;
     # 自定义配置
     settings = {
       env.TERM = "xterm-256color";

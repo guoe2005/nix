@@ -86,7 +86,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      kate
+    # kate
       neovim
     # libsForQt5.kdeconnect-kde
       syncthing
