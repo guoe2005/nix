@@ -88,7 +88,7 @@
       firefox
       kate
       neovim
-      libsForQt5.kdeconnect-kde
+    # libsForQt5.kdeconnect-kde
       syncthing
       ntfs3g
       microsoft-edge
