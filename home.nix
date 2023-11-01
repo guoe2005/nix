@@ -69,6 +69,7 @@
     file
     which
     tree
+    userhosts
     # gnused
     # gnutar
     gawk
