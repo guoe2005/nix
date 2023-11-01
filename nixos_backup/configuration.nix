@@ -45,9 +45,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  #  services.xserver.desktopManager.plasma5.enable = true;
+  # Enable the XFCE Desktop Environment.
+  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -82,16 +82,11 @@
   users.users.gy = {
     isNormalUser = true;
     description = "gy";
-    shell = pkgs.fish;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-    # kate
-      neovim
-    # libsForQt5.kdeconnect-kdegit
-      syncthing
-      ntfs3g
-      microsoft-edge
+      git
+      unzip
     #  thunderbird
     ];
   };
@@ -137,32 +132,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
-      noto-fonts
-      sarasa-gothic
-      font-awesome
-    ];
-  };
-
-  i18n.inputMethod = {
-    enabled = "ibus";
-    ibus.engines =  with pkgs.ibus-engines; [
-      libpinyin
-    ];
-  };
-
-  boot.supportedFilesystems = [ "ntfs" ];
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  programs.fish.enable = true;
-
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true;
-
-  # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
 }

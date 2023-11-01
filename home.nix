@@ -69,7 +69,6 @@
     file
     which
     tree
-    userhosts
     # gnused
     # gnutar
     gawk
@@ -105,6 +104,7 @@
     gitui
 
     terraform-providers.baiducloud
+    userhosts
 
   ];
 
