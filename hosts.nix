@@ -8,5 +8,7 @@
 146.75.122.217  cache.nixos.org
 151.101.78.217  cache.nixos.org
 
+20.205.243.166  github.com
+
 '';
 }
