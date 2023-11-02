@@ -1,5 +1,4 @@
 {
-  description = "NixOS configuration";
 
   nixConfig = {
     experimental-features = [ "nix-command" "flakes" ];
