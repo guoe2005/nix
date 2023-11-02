@@ -169,7 +169,7 @@
     enable = true;
       oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "auto-suggestions" "auto-complete" ];
+      plugins = [ "git" "zsh-autosuggestions" "zsh-completions" "zsh-syntax-highlighting"];
       theme = "robbyrussell";
       };
   };
