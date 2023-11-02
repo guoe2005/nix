@@ -168,10 +168,9 @@
   programs.zsh.enable = true;
 
   # Enable Oh-my-zsh
-  programs.zsh.ohMyZsh = {
+  programs.oh-my-zsh = {
     enable = true;
     plugins = [ "git" "sudo" "docker" "kubectl" ];
-  
   };
 
 }
