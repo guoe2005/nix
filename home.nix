@@ -163,4 +163,15 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Enable zsh
+  programs.zsh.enable = true;
+
+  # Enable Oh-my-zsh
+  programs.zsh.ohMyZsh = {
+    enable = true;
+    plugins = [ "git" "sudo" "docker" "kubectl" ];
+  
+  };
+
 }
