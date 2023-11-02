@@ -165,12 +165,12 @@
   programs.home-manager.enable = true;
 
   # Enable zsh
-  programs.zsh.enable = true;
-
-  # Enable Oh-my-zsh
-  programs.oh-my-zsh = {
+  programs.zsh = {
     enable = true;
-    plugins = [ "git" "sudo" "docker" "kubectl" ];
+      oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "auto-suggestions" "auto-complete" ];
+      theme = "robbyrussell";
+      };
   };
-
 }
