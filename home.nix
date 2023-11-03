@@ -105,12 +105,6 @@
 
     # terraform-providers.baiducloud
     userhosts
-
-    zsh-autocomplete
-    zsh-syntax-highlighting
-    zsh-git-prompt
-    zsh-completions
-
     qbittorrent-nox
     
   ];
@@ -174,9 +168,9 @@
   # Enable zsh
   programs.zsh = {
     enable = true;
-      ohMyZsh = {
+      oh-my-zsh = {
       enable = true;
-      theme = "robbyrussell";
+      theme = "gentoo";
       plugins = [
       {
       name = "zsh-autosuggestions";
@@ -190,6 +184,9 @@
      "git"
    ];
     customPkgs = with pkgs; [
+        zsh-git-prompt
+        zsh-nix-shell
+        zsh-vi-mode
         zsh-completions
         zsh-command-time
         zsh-powerlevel10k
