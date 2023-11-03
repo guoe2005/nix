@@ -83,7 +83,7 @@
   users.users.gy = {
     isNormalUser = true;
     description = "gy";
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
