@@ -177,25 +177,8 @@
       ohMyZsh = {
       enable = true;
       theme = "robbyrussell";
-      plugins = [
-      {
-      name = "zsh-autosuggestions";
-      src = pkgs.fetchFromGitHub {
-        owner = "zsh-users";
-        repo = "zsh-autosuggestions";
-        rev = "v0.4.0";
-        sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
-        };
-      }
-     "git"
-   ];
-    customPkgs = with pkgs; [
-        zsh-completions
-        zsh-command-time
-        zsh-powerlevel10k
-        zsh-fast-syntax-highlighting
-        nix-zsh-completions
-      ];
     };
   };
+  programs.zsh.plugins = with zsh_plugins; trace "++zsh plugin list: ${lib.concatMapStringsSep "," (x: x.name) plugin_list}" plugin_list;
+
 }
