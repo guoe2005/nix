@@ -190,5 +190,15 @@
         };
       }
    ];
+    customPkgs = with pkgs; [
+        zsh-git-prompt
+        zsh-nix-shell
+        zsh-vi-mode
+        zsh-completions
+        zsh-command-time
+        zsh-powerlevel10k
+        zsh-fast-syntax-highlighting
+        nix-zsh-completions
+      ];
   };
 }
