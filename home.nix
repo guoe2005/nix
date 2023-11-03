@@ -110,6 +110,8 @@
     zsh-syntax-highlighting
     zsh-git-prompt
     zsh-completions
+
+    qbittorrent-nox
     
   ];
 
