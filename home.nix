@@ -181,4 +181,8 @@
   };
   programs.zsh.plugins = with zsh_plugins; trace "++zsh plugin list: ${lib.concatMapStringsSep "," (x: x.name) plugin_list}" plugin_list;
 
+imports =
+    [ # Include the results of the hardware scan.
+      ./zsh_plugins.nix
+    ];
 }
