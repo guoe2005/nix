@@ -178,8 +178,7 @@
       enable = true;
       plugins = [ "git" ];
       theme = "robbyrussell";
-      };
-    plugins = [
+      plugins = [
       {
       name = "zsh-autosuggestions";
       src = pkgs.fetchFromGitHub {
@@ -200,5 +199,6 @@
         zsh-fast-syntax-highlighting
         nix-zsh-completions
       ];
+    };
   };
 }
