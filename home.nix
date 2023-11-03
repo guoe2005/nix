@@ -106,6 +106,11 @@
     # terraform-providers.baiducloud
     userhosts
 
+    zsh-autocomplete
+    zsh-syntax-highlighting
+    zsh-git-prompt
+    zsh-completions
+    
   ];
 
   # 启用 starship，这是一个漂亮的 shell 提示符
@@ -182,7 +187,6 @@
         sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
         };
       }
-      zsh-autocomplete
    ];
   };
 }
