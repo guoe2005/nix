@@ -186,6 +186,7 @@
       name = "zsh-autocomplete";
       src = pkgs.fetchFromGitHub {
         repo = "zsh-autocomplete";
+	owner="marlonrichert";
 	rev="2023-7-23";
         };
       }
