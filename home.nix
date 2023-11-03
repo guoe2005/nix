@@ -176,7 +176,6 @@
     enable = true;
       oh-my-zsh = {
       enable = true;
-      plugins = [ "git" ];
       theme = "robbyrussell";
       plugins = [
       {
@@ -188,6 +187,7 @@
         sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
         };
       }
+     "git"
    ];
     customPkgs = with pkgs; [
         zsh-git-prompt
