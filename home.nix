@@ -171,7 +171,7 @@
       oh-my-zsh = {
       enable = true;
       theme = "gentoo";
-      }
+      };
       plugins = [
       {
       name = "zsh-autosuggestions";
@@ -184,4 +184,4 @@
       }
      ];
     };
-  }
+ }
