@@ -169,4 +169,7 @@
 
   security.sudo.wheelNeedsPassword = false;
 
+  users.users.gy.ignoreShellProgramCheck = true;
+
+
 }
