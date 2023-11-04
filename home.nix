@@ -170,7 +170,7 @@
     enable = true;
       oh-my-zsh = {
       enable = true;
-      theme = "gentoo";
+      theme = "norm"
       };
       plugins = [
       {
