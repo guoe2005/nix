@@ -2,8 +2,8 @@
 
 {
   # 注意修改这里的用户名与用户目录
-  home.username = "gy";
-  home.homeDirectory = "/home/gy";
+  home.username = "guoyi";
+  home.homeDirectory = "/home/guoyi";
 
   # 直接将当前文件夹的配置文件，链接到 Home 目录下的指定位置
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -83,7 +83,7 @@
 
     # productivity
     # hugo # static site generator
-    glow # markdown previewer in terminal
+   # glow # markdown previewer in terminal
 
     #btop  # replacement of htop/nmon
     #iotop # io monitoring
@@ -105,8 +105,10 @@
 
     # terraform-providers.baiducloud
     userhosts
-    qbittorrent-nox
+    #qbittorrent-nox
     
+    neovim
+lazygit
   ];
 
   # 启用 starship，这是一个漂亮的 shell 提示符
@@ -169,7 +171,7 @@
   programs.zsh = {
     enable = true;
     oh-my-zsh = {
-      enable = true;
+      enable = false;
       theme = "gentoo";
       };
     plugins = [

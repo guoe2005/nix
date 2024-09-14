@@ -44,8 +44,7 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
+  
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
@@ -80,26 +79,26 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.gy = {
+  users.users.guoyi = {
     isNormalUser = true;
-    description = "gy";
+    description = "guoyi";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
+    #  firefox
     # kate
-      neovim
+     # neovim
     # libsForQt5.kdeconnect-kdegit
-      syncthing
-      ntfs3g
-      microsoft-edge
+    #  syncthing
+    #  ntfs3g
+     # microsoft-edge
     # thunderbird
     ];
   };
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "gy";
+  services.xserver.displayManager.autoLogin.user = "guoyi";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -136,14 +135,17 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
   fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
+    fontconfig.enable = true;
+     enableFontDir = true;
+       enableGhostscriptFonts = true;
+   fonts = with pkgs; [
       noto-fonts
       sarasa-gothic
       font-awesome
+          wqy_microhei
     ];
   };
 
@@ -164,12 +166,19 @@
   hardware.bluetooth.powerOnBoot = true;
 
   # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.displayManager.defaultSession = "xfce";
+  services.xserver={
+	enable=true;
+    desktopManager = {
+    xfce.enableXfwm=true;
+	xterm.enable=false;
+	xfce.enable=true;    
+};
+};
 
   security.sudo.wheelNeedsPassword = false;
 
-  users.users.gy.ignoreShellProgramCheck = true;
+  users.users.guoyi.ignoreShellProgramCheck = true;
 
 
 }
