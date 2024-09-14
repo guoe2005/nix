@@ -107,7 +107,6 @@ microsoft-edge
     # terraform-providers.baiducloud
    # userhosts
     #qbittorrent-nox
-    
    neovim
 lazygit
   ];
