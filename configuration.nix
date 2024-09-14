@@ -136,7 +136,7 @@
   fonts = {
     fontDir.enable = true;
     #enableDefaultPacages = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       noto-fonts
       sarasa-gothic
       font-awesome
