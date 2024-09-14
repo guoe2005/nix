@@ -85,14 +85,6 @@
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  firefox
-    # kate
-     # neovim
-    # libsForQt5.kdeconnect-kdegit
-    #  syncthing
-    #  ntfs3g
-     # microsoft-edge
-    # thunderbird
     ];
   };
 
@@ -107,7 +99,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -165,14 +156,14 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true;
 
-  # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.defaultSession = "xfce";
+  # Enable the Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver={
 	enable=true;
     desktopManager = {
-    xfce.enableXfwm=true;
-	xterm.enable=false;
-	xfce.enable=true;    
+    #xfce.enableXfwm=true;
+	#xterm.enable=false;
+gnome.enable=true;    
 };
 };
 

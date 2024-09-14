@@ -41,6 +41,7 @@
     # neofetch
     nnn # terminal file manager
 
+microsoft-edge
     # archives
     zip
     xz
@@ -101,7 +102,7 @@
     pciutils # lspci
     usbutils # lsusb
     mpv
-    gitui
+    #gitui
 
     # terraform-providers.baiducloud
     userhosts
@@ -171,7 +172,7 @@ lazygit
   programs.zsh = {
     enable = true;
     oh-my-zsh = {
-      enable = false;
+      enable = true;
       theme = "gentoo";
       };
     plugins = [
