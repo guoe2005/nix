@@ -102,6 +102,7 @@
   gnome3.gnome-tweaks
   gcc
   clang
+  android-tools
   cmake
   ];
 
