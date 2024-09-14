@@ -50,7 +50,7 @@ microsoft-edge
     # archives
     zip
   #  xz
-    typeon
+    typon
     unzip
     #  p7zip
 
