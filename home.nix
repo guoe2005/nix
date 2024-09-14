@@ -31,6 +31,8 @@
     enable = true;
     userName = "guoe2005";
     userEmail = "guoe2005@126.com";
+    extraConfig = {
+    };
   };
 
   # 通过 home.packages 安装一些常用的软件
