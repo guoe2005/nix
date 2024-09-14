@@ -99,6 +99,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  gcc
+  clang
+  cmake
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -136,7 +139,10 @@
       noto-fonts
       sarasa-gothic
       font-awesome
-          wqy_microhei
+      wqy_microhei
+      (nerdfonts.override{
+          fonts = ["FiraCode"];
+        })
     ];
   };
 

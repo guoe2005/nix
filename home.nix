@@ -39,12 +39,12 @@
   home.packages = with pkgs;[
     # 如下是我常用的一些命令行工具，你可以根据自己的需要进行增删
     # neofetch
-    nnn # terminal file manager
+ #   nnn # terminal file manager
 
 microsoft-edge
     # archives
     zip
-    xz
+  #  xz
     unzip
     #  p7zip
 
@@ -53,7 +53,7 @@ microsoft-edge
     #  jq # A lightweight and flexible command-line JSON processor
     # yq-go # yaml processer https://github.com/mikefarah/yq
     #  exa # A modern replacement for ‘ls’
-    fzf # A command-line fuzzy finder
+#    fzf # A command-line fuzzy finder
 
     # networking tools
     # mtr # A network diagnostic tool
@@ -66,13 +66,13 @@ microsoft-edge
     # ipcalc  # it is a calculator for the IPv4/v6 addresses
 
     # misc
-    cowsay
-    file
-    which
-    tree
+   # cowsay
+    #file
+   # which
+  #  tree
     # gnused
     # gnutar
-    gawk
+   # gawk
     # zstd
     # gnupg
 
@@ -80,7 +80,7 @@ microsoft-edge
     #
     # it provides the command `nom` works just like `nix`
     # with more details log output
-    nix-output-monitor
+    #nix-output-monitor
 
     # productivity
     # hugo # static site generator
@@ -99,16 +99,16 @@ microsoft-edge
     # sysstat
     # lm_sensors # for `sensors` command
     # ethtool
-    pciutils # lspci
-    usbutils # lsusb
+    #pciutils # lspci
+   # usbutils # lsusb
     mpv
     #gitui
-
+ 
     # terraform-providers.baiducloud
-    userhosts
+   # userhosts
     #qbittorrent-nox
     
-    neovim
+   neovim
 lazygit
   ];
 
@@ -163,7 +163,7 @@ lazygit
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -187,4 +187,7 @@ lazygit
       }
      ];
     };
+    
+    
+    
  }
