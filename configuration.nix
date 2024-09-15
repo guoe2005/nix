@@ -59,7 +59,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -131,7 +131,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
   fonts = {
     fontDir.enable = true;
@@ -151,20 +151,17 @@
   };
 
   i18n.inputMethod = {
-    # enabled = "ibus";
-    # ibus.engines =  with pkgs.ibus-engines; [
-    #   libpinyin
-    # ];
-   fcitx5.waylandFrontend = true;
-   i18n.inputMethod = {
-     enabled = "fcitx5";
-     waylandFrontend = true;
-     fcitx5.addons = with pkgs; [
-       fcitx5-gtk             # alternatively, kdePackages.fcitx5-qt
-       fcitx5-chinese-addons  # table input method support
-       fcitx5-nord            # a color theme
-     ];
-   };
+    enabled = "ibus";
+    ibus.engines =  with pkgs.ibus-engines; [
+      libpinyin
+      rime
+    ];
+    # enabled = "fcitx5";
+    # fcitx5.addons = with pkgs; [
+    #   fcitx5-gtk             # alternatively, kdePackages.fcitx5-qt
+    #   fcitx5-chinese-addons  # table input method support
+    #   fcitx5-rime            # a color theme
+    #  ];
   };
 
   boot.supportedFilesystems = [ "ntfs" ];
