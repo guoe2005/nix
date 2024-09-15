@@ -32,9 +32,10 @@
     userName = "guoe2005";
     userEmail = "guoe2005@126.com";
     extraConfig = {
-    #  credential.helper = "${
-     #     pkgs.git.override { withLibsecret = true; }
-      #  }/bin/git-credential-libsecret";
+      credential.helper = "${
+          pkgs.git.override { withLibsecret = true; }
+        }/bin/git-credential-libsecret";
+        push = { autoSetupRemote = true; };
     };
   };
 
