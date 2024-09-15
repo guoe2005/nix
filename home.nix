@@ -50,7 +50,7 @@
     microsoft-edge
     # archives
     zip
-  #  xz
+    #xz
     #typon  
     gtypist
     unzip
@@ -61,7 +61,7 @@
     #  jq # A lightweight and flexible command-line JSON processor
     # yq-go # yaml processer https://github.com/mikefarah/yq
     #  exa # A modern replacement for ‘ls’
-#    fzf # A command-line fuzzy finder
+    # fzf # A command-line fuzzy finder
 
     # networking tools
     # mtr # A network diagnostic tool
@@ -74,9 +74,9 @@
     # ipcalc  # it is a calculator for the IPv4/v6 addresses
 
     # misc
-   # cowsay
+    # cowsay
     #file
-   # which
+    #which
   #  tree
     # gnused
     # gnutar

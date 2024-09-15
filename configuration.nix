@@ -114,12 +114,14 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  gnome3.gnome-tweaks
-    gnomeExtensions.gsconnect
-  gcc
-  clang
-  android-tools
-  cmake
+    gnome3.gnome-tweaks
+    # gnomeExtensions.gsconnect
+    gcc
+    rustup
+    rust-analyzer
+    clang
+    android-tools
+    cmake
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -200,8 +202,8 @@
 };
   security.sudo.wheelNeedsPassword = false;
   users.users.guoyi.ignoreShellProgramCheck = true;
-boot.loader.systemd-boot.configurationLimit = 3;
-nix.gc = {
+  boot.loader.systemd-boot.configurationLimit = 3;
+  nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 3d";
