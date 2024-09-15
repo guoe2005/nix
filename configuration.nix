@@ -154,7 +154,6 @@
     enabled = "ibus";
     ibus.engines =  with pkgs.ibus-engines; [
       libpinyin
-      rime
     ];
     # enabled = "fcitx5";
     # fcitx5.addons = with pkgs; [
