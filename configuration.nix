@@ -115,6 +115,7 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   gnome3.gnome-tweaks
+    gnomeExtensions.gsconnect
   gcc
   clang
   android-tools
@@ -197,10 +198,13 @@
     gnome.enable=true;    
 };
 };
-
   security.sudo.wheelNeedsPassword = false;
-
   users.users.guoyi.ignoreShellProgramCheck = true;
-
-
+boot.loader.systemd-boot.configurationLimit = 3;
+nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 3d";
+  };
+  nix.settings.auto-optimise-store = true;
 }

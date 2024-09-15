@@ -47,7 +47,7 @@
     # neofetch
  #   nnn # terminal file manager
 
-microsoft-edge
+    microsoft-edge
     # archives
     zip
   #  xz
@@ -115,37 +115,51 @@ microsoft-edge
     # terraform-providers.baiducloud
    # userhosts
     #qbittorrent-nox
-   neovim
+     neovim
     lazygit
   ];
-
+  # programs.neovim = {
+  #   enable = true;
+  #   package = pkgs.neovim-unwrapped;
+  #   viAlias = true;
+  #   vimAlias = true;
+  # };
   # 启用 starship，这是一个漂亮的 shell 提示符
-  programs.starship = {
-    enable = true;
-    # 自定义配置
-    settings = {
-      add_newline = false;
-      aws.disabled = true;
-      gcloud.disabled = true;
-      line_break.disabled = true;
-    };
-  };
-
-  # alacritty - 一个跨平台终端，带 GPU 加速功能
-  programs.alacritty = {
-    enable = false;
-    # 自定义配置
-    settings = {
-      env.TERM = "xterm-256color";
-      font = {
-        size = 12;
-        draw_bold_text_with_bright_colors = true;
-      };
-      scrolling.multiplier = 5;
-      selection.save_to_clipboard = true;
-    };
-  };
-
+  # neovim = pkgs.neovim.overrideAttrs (old: rec {
+  #   version = "0.10.1";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "neovim";
+  #     repo = "neovim";
+  #     rev = "v0.10.1";
+  #     sha256 = "4867de01a17f6083f902f8aa5215b40b0ed3a36e83cc0293de3f11708f1f9793";
+  #   };
+  # });
+  # programs.starship = {
+  #   enable = true;
+  #   # 自定义配置
+  #   settings = {
+  #     add_newline = false;
+  #     aws.disabled = true;
+  #     gcloud.disabled = true;
+  #     line_break.disabled = true;
+  #   };
+  # };
+  #
+  # # alacritty - 一个跨平台终端，带 GPU 加速功能
+  # programs.alacritty = {
+  #   enable = false;
+  #   # 自定义配置
+  #   settings = {
+  #     env.TERM = "xterm-256color";
+  #     font = {
+  #       size = 12;
+  #       draw_bold_text_with_bright_colors = true;
+  #     };
+  #     scrolling.multiplier = 5;
+  #     selection.save_to_clipboard = true;
+  #   };
+  # };
+  #
   programs.bash = {
     enable = true;
     enableCompletion = true;
