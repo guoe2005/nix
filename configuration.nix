@@ -151,17 +151,24 @@
   };
 
   i18n.inputMethod = {
-    enabled = "ibus";
-    ibus.engines =  with pkgs.ibus-engines; [
-      libpinyin
-    ];
+    # enabled = "ibus";
+    # ibus.engines =  with pkgs.ibus-engines; [
+    #   libpinyin
+    # ];
+    fcitx5.waylandFrontend = true;
+   type = "fcitx5";
+   enable = true;
+   fcitx5.addons = with pkgs; [
+     fcitx5-mozc
+     fcitx5-gtk
+   ];
   };
 
   boot.supportedFilesystems = [ "ntfs" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  programs.fish.enable = true;
+  #programs.fish.enable = true;
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true;
@@ -172,8 +179,8 @@
 	enable=true;
     desktopManager = {
     #xfce.enableXfwm=true;
-	#xterm.enable=false;
-gnome.enable=true;    
+	  #xterm.enable=false;
+    gnome.enable=true;    
 };
 };
 
