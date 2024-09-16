@@ -117,6 +117,7 @@
     gnome3.gnome-tweaks
     # gnomeExtensions.gsconnect
     gcc
+    wl-clipboard
     rustup
     rust-analyzer
     clang
