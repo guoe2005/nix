@@ -98,7 +98,7 @@
     isNormalUser = true;
     description = "guoyi";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers"];
     packages = with pkgs; [
     ];
   };
@@ -118,8 +118,10 @@
     # gnomeExtensions.gsconnect
     gcc
     wl-clipboard
+    # gnomeExtensions.open-bar
     rustup
-    rust-analyzer
+    gnomeExtensions.dash-to-panel
+    # rust-analyzer
     clang
     android-tools
     cmake
