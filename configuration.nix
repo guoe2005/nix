@@ -71,7 +71,7 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # services.printing.enable = true;
 
   # Enable sound with pipewire.
   # sound.enable = true;
@@ -98,7 +98,8 @@
     isNormalUser = true;
     description = "guoyi";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "adbusers"];
+    extraGroups = [ "wheel" "adbusers"];
+    # extraGroups = [ "networkmanager" "wheel" "adbusers"];
     packages = with pkgs; [
     ];
   };
@@ -112,21 +113,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    gnome3.gnome-tweaks
-    # gnomeExtensions.gsconnect
-    gcc
-    wl-clipboard
-    # gnomeExtensions.open-bar
-    rustup
-    gnomeExtensions.dash-to-panel
-    # rust-analyzer
-    clang
-    android-tools
-    cmake
-  ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -163,7 +149,7 @@
       font-awesome
       wqy_microhei
       (nerdfonts.override{
-          fonts = ["FiraCode"];
+          fonts = ["FiraCode" "SourceCodePro" "Hack"];
         })
     ];
     fontconfig = {
@@ -212,4 +198,41 @@
     options = "--delete-older-than 3d";
   };
   nix.settings.auto-optimise-store = true;
+  programs.npm.package = true;
+   swapDevices = [{
+    device = "/swapfile";
+    size = 16 * 1024; # 16GB
+  }];
+    # hybrid sleep when press power button
+  services.logind.extraConfig = ''
+    HandlePowerKey=suspend
+    IdleAction=suspend
+    IdleActionSec=1m
+  '';
+
+  # screen locker
+  programs.xss-lock.enable = true;
+
+  environment.systemPackages = with pkgs; [
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    gnome3.gnome-tweaks
+    # gnomeExtensions.gsconnect
+    gcc
+    # gnomeExtensions.material-you-color-theming
+    # nodejs_22
+    nodejs
+    wl-clipboard
+    # gnomeExtensions.open-bar
+    rustup
+    gnomeExtensions.dash-to-panel
+    # rust-analyzer
+    clang
+    flat-remix-gnome
+    android-tools
+    cmake
+    gnomeExtensions.ibus-tweaker
+    # flat-remix-gtk
+    # orchis-theme
+  ];
 }
+
