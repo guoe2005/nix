@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config,lib, pkgs, ... }:
 
 {
   # 注意修改这里的用户名与用户目录
@@ -115,7 +115,7 @@
     # terraform-providers.baiducloud
    # userhosts
     #qbittorrent-nox
-     neovim
+ 
     lazygit
   ];
   # programs.neovim = {
@@ -124,6 +124,9 @@
   #   viAlias = true;
   #   vimAlias = true;
   # };
+  
+   
+  
   # 启用 starship，这是一个漂亮的 shell 提示符
   # neovim = pkgs.neovim.overrideAttrs (old: rec {
   #   version = "0.10.1";
@@ -209,7 +212,6 @@
       }
      ];
     };
-    
-    
+  
     
  }
