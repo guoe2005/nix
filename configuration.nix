@@ -231,6 +231,7 @@
     android-tools
     lua
     cmake
+    gnumake
     gnomeExtensions.ibus-tweaker
     # flat-remix-gtk
     # orchis-theme
