@@ -24,14 +24,14 @@
 
   # Enable networking
   #networking.networkmanager.enable = false;
-  networking.wireless.iwd.settings = {
-    IPv6 ={
-      Enable = true;
-    };
-    Settings = {
-      AutoConnect = true;
-    };
-  };
+  # networking.wireless.iwd.settings = {
+  #   IPv6 ={
+  #     Enable = true;
+  #   };
+  #   Settings = {
+  #     AutoConnect = true;
+  #   };
+  # };
   system.activationScripts = {
     rfkillUnblockWlan = {
       text = ''
