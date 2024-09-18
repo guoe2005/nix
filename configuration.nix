@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hosts.nix
+      /etc/nixos/hardware-configuration.nix
     ];
 
   # Bootloader.
