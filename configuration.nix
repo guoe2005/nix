@@ -7,7 +7,6 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
       ./hosts.nix
     ];
 
@@ -65,9 +64,9 @@
   # services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "cn";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -105,8 +104,8 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "guoyi";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "guoyi";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
