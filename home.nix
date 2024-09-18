@@ -115,7 +115,7 @@
     # terraform-providers.baiducloud
    # userhosts
     #qbittorrent-nox
- 
+  neovim
     lazygit
   ];
   # programs.neovim = {
