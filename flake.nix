@@ -31,7 +31,7 @@
   };
     };
 
-  outputs = inputs@{ self, nixpkgs,nixvim, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
       # 这里的 nixos-test 替换成你的主机名称
       surface= nixpkgs.lib.nixosSystem {
