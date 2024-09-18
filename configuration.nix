@@ -222,6 +222,7 @@
     # nodejs_22
     nodejs
     wl-clipboard
+    wl-clipboard-x11
     # gnomeExtensions.open-bar
     rustup
     gnomeExtensions.dash-to-panel
@@ -230,11 +231,13 @@
     flat-remix-gnome
     android-tools
     lua
+    # inputs.nixvim.packages.${system}.nixvim
     cmake
     gnumake
     gnomeExtensions.ibus-tweaker
     # flat-remix-gtk
     # orchis-theme
   ];
+     # programs.nixvim.enable = true;
 }
 
