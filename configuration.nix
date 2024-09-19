@@ -230,7 +230,7 @@
     clang
     flat-remix-gnome
     android-tools
-    lua
+    # lua
     # inputs.nixvim.packages.${system}.nixvim
     cmake
     gnumake
