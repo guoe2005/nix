@@ -1,6 +1,10 @@
 { config,pkgs, ... }:
-
+ 
 {
+
+ # imports = [
+ #  ./nvim
+ # ];
   # 注意修改这里的用户名与用户目录
   home.username = "guoyi";
   home.homeDirectory = "/home/guoyi";
@@ -46,7 +50,7 @@
     # 如下是我常用的一些命令行工具，你可以根据自己的需要进行增删
     # neofetch
  #   nnn # terminal file manager
-
+ unstable.neovim
     microsoft-edge
     # archives
     zip
@@ -115,7 +119,7 @@
     # terraform-providers.baiducloud
    # userhosts
     #qbittorrent-nox
-  neovim
+  # neovim
     lazygit
   ];
   # programs.neovim = {
@@ -212,6 +216,5 @@
       }
      ];
     };
-  
-    
+
  }
