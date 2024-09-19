@@ -40,6 +40,16 @@
       surface= nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+        {nixpkgs.overlays = [
+              (final: prev: {
+                unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+                # use this variant if unfree packages are needed:
+                # unstable = import nixpkgs-unstable {
+                #   inherit system;
+                #   config.allowUnfree = true;
+                # };
+              })
+            ];}
           ./configuration.nix
           # 将 home-manager 配置为 nixos 的一个 module
           # 这样在 nixos-rebuild switch 时，home-manager 配置也会被自动部署
