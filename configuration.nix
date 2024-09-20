@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hosts.nix
       /etc/nixos/hardware-configuration.nix
     ];
@@ -22,22 +23,22 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  #networking.networkmanager.enable = false;
-  # networking.wireless.iwd.settings = {
-  #   IPv6 ={
-  #     Enable = true;
-  #   };
-  #   Settings = {
-  #     AutoConnect = true;
-  #   };
-  # };
+  #  Enable networking
+  # networking.networkmanager.enable = true;
+  networking.wireless.iwd.settings = {
+    IPv6 = {
+      Enable = true;
+    };
+    Settings = {
+      AutoConnect = true;
+    };
+  };
   system.activationScripts = {
     rfkillUnblockWlan = {
       text = ''
-      rfkill unblock wlan
+        rfkill unblock wlan
       '';
-      deps = [];
+      deps = [ ];
     };
   };
   # Set your time zone.
@@ -59,17 +60,17 @@
   };
 
   # Enable the X11 windowing system.
-  
+
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "cn";
-    variant = "";
-  };
 
+  #   layout = "en";
+  #   variant = "";
+  # };
+  #
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -91,21 +92,20 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.guoyi = {
     isNormalUser = true;
     description = "guoyi";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "adbusers"];
-    # extraGroups = [ "networkmanager" "wheel" "adbusers"];
+    extraGroups = [ "wheel" "adbusers" ];
     packages = with pkgs; [
     ];
   };
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.enable = false;
   services.displayManager.autoLogin.user = "guoyi";
 
   # Allow unfree packages
@@ -142,68 +142,48 @@
 
   fonts = {
     fontDir.enable = true;
-    #enableDefaultPacages = true;
     packages = with pkgs; [
       noto-fonts
       sarasa-gothic
       font-awesome
       wqy_microhei
-      (nerdfonts.override{
-          fonts = ["FiraCode" "SourceCodePro" "Hack"];
-        })
+      (nerdfonts.override {
+        fonts = [ "FiraCode" "SourceCodePro" "Hack" ];
+      })
     ];
-    fontconfig = {
-
-      };
+    fontconfig = { };
   };
 
   i18n.inputMethod = {
     enabled = "ibus";
-    ibus.engines =  with pkgs.ibus-engines; [
+    ibus.engines = with pkgs.ibus-engines; [
       libpinyin
     ];
-    # enabled = "fcitx5";
-    # fcitx5.addons = with pkgs; [
-    #   fcitx5-gtk             # alternatively, kdePackages.fcitx5-qt
-    #   fcitx5-chinese-addons  # table input method support
-    #   fcitx5-rime            # a color theme
-    #  ];
   };
 
   boot.supportedFilesystems = [ "ntfs" ];
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  #programs.fish.enable = true;
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true;
 
-  # Enable the Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver={
-	enable=true;
-    desktopManager = {
-    #xfce.enableXfwm=true;
-	  #xterm.enable=false;
-    gnome.enable=true;    
-};
-};
   security.sudo.wheelNeedsPassword = false;
   users.users.guoyi.ignoreShellProgramCheck = true;
   boot.loader.systemd-boot.configurationLimit = 3;
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 3d";
   };
-  nix.settings.auto-optimise-store = true;
-  programs.npm.package = true;
-   swapDevices = [{
+
+  # jnix.settings.auto-optimise-store = true;
+
+  swapDevices = [{
     device = "/swapfile";
     size = 16 * 1024; # 16GB
   }];
-    # hybrid sleep when press power button
+  # hybrid sleep when press power button
   services.logind.extraConfig = ''
     HandlePowerKey=suspend
     IdleAction=suspend
@@ -213,31 +193,52 @@
   # screen locker
   programs.xss-lock.enable = true;
 
+  programs.npm.package = true;
+
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     gnome3.gnome-tweaks
     # gnomeExtensions.gsconnect
     gcc
-    # gnomeExtensions.material-you-color-theming
-    # nodejs_22
     nodejs
+    st
     wl-clipboard
-    wl-clipboard-x11
-    # gnomeExtensions.open-bar
     rustup
     gnomeExtensions.dash-to-panel
-    # rust-analyzer
     clang
     flat-remix-gnome
     android-tools
-    # lua
-    # inputs.nixvim.packages.${system}.nixvim
     cmake
     gnumake
     gnomeExtensions.ibus-tweaker
-    # flat-remix-gtk
-    # orchis-theme
+    grim
+    slurp
+    mako
   ];
-     # programs.nixvim.enable = true;
+
+  # Enable the Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver = {
+    enable = true;
+    # dpi = 180;
+    desktopManager = {
+      gnome.enable = true;
+    };
+  };
+
+  # services.xserver.windowManager.dwm.enable = true;
+  # services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
+  #   src = /home/guoyi/nix/dwm-flexipatch;
+  # };
+
+  # services.gnome.gnome-keyring.enable = true;
+
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  # };
+  #
+  # security.polkit.enable = true;
+  # security.pam.services.swaylock = { };
+  #
 }
 
