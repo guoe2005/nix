@@ -25,22 +25,22 @@
 
   #  Enable networking
   # networking.networkmanager.enable = true;
-  networking.wireless.iwd.settings = {
-    IPv6 = {
-      Enable = true;
-    };
-    Settings = {
-      AutoConnect = true;
-    };
-  };
-  system.activationScripts = {
-    rfkillUnblockWlan = {
-      text = ''
-        rfkill unblock wlan
-      '';
-      deps = [ ];
-    };
-  };
+  # networking.wireless.iwd.settings = {
+  #   IPv6 = {
+  #     Enable = true;
+  #   };
+  #   Settings = {
+  #     AutoConnect = true;
+  #   };
+  # };
+  # system.activationScripts = {
+  #   rfkillUnblockWlan = {
+  #     text = ''
+  #       rfkill unblock wlan
+  #     '';
+  #     deps = [ ];
+  #   };
+  # };
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
@@ -92,14 +92,14 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
+  # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.guoyi = {
     isNormalUser = true;
     description = "guoyi";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "adbusers" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
     ];
   };
@@ -179,19 +179,19 @@
 
   # jnix.settings.auto-optimise-store = true;
 
-  swapDevices = [{
-    device = "/swapfile";
-    size = 16 * 1024; # 16GB
-  }];
+  # swapDevices = [{
+  #   device = "/swapfile";
+  #   size = 16 * 1024; # 16GB
+  # }];
   # hybrid sleep when press power button
-  services.logind.extraConfig = ''
-    HandlePowerKey=suspend
-    IdleAction=suspend
-    IdleActionSec=1m
-  '';
+  # services.logind.extraConfig = ''
+  #   HandlePowerKey=suspend
+  #   IdleAction=suspend
+  #   IdleActionSec=1m
+  # '';
 
   # screen locker
-  programs.xss-lock.enable = true;
+  # programs.xss-lock.enable = true;
 
   programs.npm.package = true;
 
@@ -234,11 +234,10 @@
 
   # programs.sway = {
   #   enable = true;
-  #   wrapperFeatures.gtk = true;
+  # wrapperFeatures.gtk = true;
   # };
-  #
+
   # security.polkit.enable = true;
   # security.pam.services.swaylock = { };
-  #
 }
 
