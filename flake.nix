@@ -25,7 +25,15 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }: {
+  inputs.nixvim = {
+    # url = "github:nix-community/nixvim";
+    # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+    url = "github:nix-community/nixvim/nixos-24.05";
+
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable,  home-manager, ... }: {
     nixosConfigurations = {
       # 这里的 nixos-test 替换成你的主机名称
       surface = nixpkgs.lib.nixosSystem {
@@ -46,6 +54,7 @@
           ./configuration.nix
           # 将 home-manager 配置为 nixos 的一个 module
           # 这样在 nixos-rebuild switch 时，home-manager 配置也会被自动部署
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

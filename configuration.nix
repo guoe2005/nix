@@ -8,7 +8,7 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./hosts.nix
+      # ./hosts.nix
       /etc/nixos/hardware-configuration.nix
     ];
 
@@ -99,7 +99,7 @@
     isNormalUser = true;
     description = "guoyi";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "video"];
     packages = with pkgs; [
     ];
   };
@@ -203,6 +203,7 @@
     st
     wl-clipboard
     rustup
+    rust-analyzer
     gnomeExtensions.dash-to-panel
     clang
     flat-remix-gnome
@@ -213,6 +214,7 @@
     grim
     slurp
     mako
+    rofi
   ];
 
   # Enable the Desktop Environment.
@@ -230,14 +232,23 @@
   #   src = /home/guoyi/nix/dwm-flexipatch;
   # };
 
-  # services.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
-  # programs.sway = {
+  programs.sway = {
+    enable = true;
+  wrapperFeatures.gtk = true;
+  };
+programs.light.enable = true;
+
+  security.polkit.enable = true;
+  security.pam.services.swaylock = { };
+
+  # programs.nixvim = {
   #   enable = true;
-  # wrapperFeatures.gtk = true;
+  #
+  #   colorschemes.catppuccin.enable = true;
+  #   plugins.lualine.enable = true;
   # };
 
-  # security.polkit.enable = true;
-  # security.pam.services.swaylock = { };
 }
 
