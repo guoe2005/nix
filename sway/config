@@ -5,7 +5,7 @@ set $up k
 set $right l
 
 # 设置默认终端为konsole
-set $term kgx
+set $term st
 # 设置应用启动菜单
 set $menu rofi -show  drun -theme Arc-Dark -font "JetBrainsMono Nerd Font 18"| xargs swaymsg exec --
 

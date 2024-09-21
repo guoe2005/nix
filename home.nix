@@ -45,6 +45,7 @@
     gtypist
     unzip
     dmenu
+    nnn
     mpv
     nix-output-monitor
     lazygit
@@ -83,20 +84,20 @@
     ];
   };
 
-  wayland.windowManager.sway = {
-    enable = true;
-    config = rec {
-      modifier = "Mod4";
-      # Use kitty as default terminal
-      terminal = "kgx";
-      startup = [
-        # Launch start
-        { command = "microsoft-edge"; }
-        { command = "kgx"; }
-      ];
-    };
-  };
+   # wayland.windowManager.sway = {
+   #  # enable = true;
+   #   config = rec {
+   #    # modifier = "Mod4";
+   #    # Use kitty as default terminal
+   #    # terminal = "st";
+   #     startup = [
+   #      # Launch start
+   #      { command = "microsoft-edge"; }
+   #       { command = "st"; }
+   #     ];
+   #   };
+   # };
 
   
-  home.file.".config/sawy/config".source = /home/guoyi/nix/sway/config;
+  home.file.".config/sway/config".source = /home/guoyi/nix/sway/config;
 }

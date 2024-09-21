@@ -8,7 +8,7 @@
   imports =
     [
       # Include the results of the hardware scan.
-      # ./hosts.nix
+      /home/guoyi/nix/hosts.nix
       /etc/nixos/hardware-configuration.nix
     ];
 
@@ -105,7 +105,7 @@
   };
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = false;
+  services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "guoyi";
 
   # Allow unfree packages
@@ -218,14 +218,14 @@
   ];
 
   # Enable the Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver = {
-    enable = true;
-    # dpi = 180;
-    desktopManager = {
-      gnome.enable = true;
-    };
-  };
+   # services.xserver.displayManager.gdm.enable = true;
+   # services.xserver = {
+     # enable = true;
+  #   # dpi = 180;
+  #   desktopManager = {
+  #     gnome.enable = true;
+  #   };
+   # };
 
   # services.xserver.windowManager.dwm.enable = true;
   # services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
@@ -234,14 +234,14 @@
 
   services.gnome.gnome-keyring.enable = true;
 
-  programs.sway = {
-    enable = true;
+programs.sway = {
+  enable = true;
   wrapperFeatures.gtk = true;
-  };
-programs.light.enable = true;
+};
+ programs.light.enable = true;
 
-  security.polkit.enable = true;
-  security.pam.services.swaylock = { };
+#   security.polkit.enable = true;
+#   security.pam.services.swaylock = { };
 
   # programs.nixvim = {
   #   enable = true;
