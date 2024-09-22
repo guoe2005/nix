@@ -24,7 +24,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   #  Enable networking
-  # networking.networkmanager.enable = true;
+   networking.networkmanager.enable = true;
   # networking.wireless.iwd.settings = {
   #   IPv6 = {
   #     Enable = true;
@@ -91,8 +91,6 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.guoyi = {
@@ -147,9 +145,9 @@
       sarasa-gothic
       font-awesome
       wqy_microhei
-      (nerdfonts.override {
-        fonts = [ "FiraCode" "SourceCodePro" "Hack" ];
-      })
+      # (nerdfonts.override {
+      #   fonts = [ "FiraCode" "SourceCodePro" "Hack" ];
+      # })
     ];
     fontconfig = { };
   };
@@ -200,7 +198,6 @@
     # gnomeExtensions.gsconnect
     gcc
     nodejs
-    st
     wl-clipboard
     rustup
     rust-analyzer
@@ -234,6 +231,9 @@
 
   services.gnome.gnome-keyring.enable = true;
 
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.libinput.enable = true;
+
 programs.sway = {
   enable = true;
   wrapperFeatures.gtk = true;
@@ -250,5 +250,23 @@ programs.sway = {
   #   plugins.lualine.enable = true;
   # };
 
+  # nixvim={
+  #   enable=true;
+  # };
+stylix = {
+  enable = true;
+  base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  fonts = {
+    emoji = {
+      package = pkgs.noto-fonts-emoji;
+      name = "Noto Color Emoji";
+    };
+  };
+ # image = pkgs.fetchurl {
+ #    url = "https://www.pixelstalk.net/wp-content/uploads/2016/07/Desert-Background-Download-Free.jpg";
+ #    # sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
+ #  };
+    image=/home/guoyi/Pictures/Desert-Background-Download-Free.jpg;
+};
 }
 

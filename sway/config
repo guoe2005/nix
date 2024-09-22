@@ -5,9 +5,9 @@ set $up k
 set $right l
 
 # 设置默认终端为konsole
-set $term st
+set $term kitty
 # 设置应用启动菜单
-set $menu rofi -show  drun -theme Arc-Dark -font "JetBrainsMono Nerd Font 18"| xargs swaymsg exec --
+set $menu rofi -show  drun | xargs swaymsg exec --
 
 # 按下mod键和回车键打开一个konsole
 bindsym $mod+Return exec $term
@@ -82,10 +82,12 @@ mode "resize" {
 }
 
 # Brightness
-# bindsym $mod+Shift+] exec light -U 10
-# bindsym $mod+Shift+[ exec light -A 10
+bindsym F86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec light -A 10
 
 # Volume
 bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
 bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
 bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+
+output "*" bg /home/guoyi/nix/pics/Desert-Background-Download-Free.jpg fill

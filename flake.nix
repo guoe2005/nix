@@ -23,6 +23,8 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    stylix.url = "github:danth/stylix";
   };
 
   inputs.nixvim = {
@@ -40,6 +42,7 @@
         system = "x86_64-linux";
         modules = [
           {
+
             nixpkgs.overlays = [
               (final: prev: {
                 unstable = nixpkgs-unstable.legacyPackages.${prev.system};
@@ -72,8 +75,11 @@
       };
 
       t440 = nixpkgs.lib.nixosSystem {
+        specialArgs={inherit inputs;};
         system = "x86_64-linux";
         modules = [
+        inputs.stylix.nixosModules.stylix
+inputs.nixvim.nixosModules.nixvim
           {
             nixpkgs.overlays = [
               (final: prev: {
