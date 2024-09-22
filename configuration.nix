@@ -243,16 +243,13 @@ programs.sway = {
 #   security.polkit.enable = true;
 #   security.pam.services.swaylock = { };
 
-  # programs.nixvim = {
-  #   enable = true;
-  #
+   programs.nixvim = {
+     enable = true;
   #   colorschemes.catppuccin.enable = true;
   #   plugins.lualine.enable = true;
   # };
-
-  # nixvim={
-  #   enable=true;
-  # };
+   };
+  
 stylix = {
   enable = true;
   base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
@@ -266,7 +263,7 @@ stylix = {
  #    url = "https://www.pixelstalk.net/wp-content/uploads/2016/07/Desert-Background-Download-Free.jpg";
  #    # sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
  #  };
-    image=/home/guoyi/Pictures/Desert-Background-Download-Free.jpg;
+    image=/home/guoyi/nix/pics/Desert-Background-Download-Free.jpg;
 };
 }
 

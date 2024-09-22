@@ -35,14 +35,15 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable,  home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixvim, home-manager, ... }: {
     nixosConfigurations = {
       # 这里的 nixos-test 替换成你的主机名称
       surface = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+        inputs.stylix.nixosModules.stylix
+        inputs.nixvim.nixosModules.nixvim
           {
-
             nixpkgs.overlays = [
               (final: prev: {
                 unstable = nixpkgs-unstable.legacyPackages.${prev.system};
@@ -79,7 +80,7 @@
         system = "x86_64-linux";
         modules = [
         inputs.stylix.nixosModules.stylix
-inputs.nixvim.nixosModules.nixvim
+        inputs.nixvim.nixosModules.nixvim
           {
             nixpkgs.overlays = [
               (final: prev: {
