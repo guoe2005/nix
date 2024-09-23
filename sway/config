@@ -7,8 +7,8 @@ set $right l
 # 设置默认终端为konsole
 set $term kitty
 # 设置应用启动菜单
-set $menu rofi -show  drun | xargs swaymsg exec --
-
+# set $menu rofi -show  drun | xargs swaymsg exec --
+set $menu j4-dmenu-desktop --dmenu='bemenu -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono 12"' --term='termite'
 # 按下mod键和回车键打开一个konsole
 bindsym $mod+Return exec $term
 # 按下mod和c重新加载sway
@@ -91,3 +91,7 @@ bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
 bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
 
 output "*" bg /home/guoyi/nix/pics/Desert-Background-Download-Free.jpg fill
+
+bar {
+    status_command d(){ date +'%Y-%m-%d %H:%M %A %V ';}; d; sleep $((60-$(date +%S))); while d; do sleep 60; done
+}

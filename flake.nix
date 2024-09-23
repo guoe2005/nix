@@ -38,7 +38,9 @@
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixvim, home-manager, ... }: {
     nixosConfigurations = {
       # 这里的 nixos-test 替换成你的主机名称
-      surface = nixpkgs.lib.nixosSystem {
+      surface = nixpkgs.lib.nixosSystem rec {
+
+        specialArgs={inherit inputs;};
         system = "x86_64-linux";
         modules = [
         inputs.stylix.nixosModules.stylix
@@ -75,7 +77,7 @@
         ];
       };
 
-      t440 = nixpkgs.lib.nixosSystem {
+      t440 = nixpkgs.lib.nixosSystem rec {
         specialArgs={inherit inputs;};
         system = "x86_64-linux";
         modules = [
