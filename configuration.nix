@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs,... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -24,7 +24,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   #  Enable networking
-   networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true;
   # networking.wireless.iwd.settings = {
   #   IPv6 = {
   #     Enable = true;
@@ -97,7 +97,7 @@
     isNormalUser = true;
     description = "guoyi";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkmanager" "video"];
+    extraGroups = [ "wheel" "networkmanager" "video" ];
     packages = with pkgs; [
     ];
   };
@@ -215,14 +215,14 @@
   ];
 
   # Enable the Desktop Environment.
-   # services.xserver.displayManager.gdm.enable = true;
-   # services.xserver = {
-     # enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver = {
+  # enable = true;
   #   # dpi = 180;
   #   desktopManager = {
   #     gnome.enable = true;
   #   };
-   # };
+  # };
 
   # services.xserver.windowManager.dwm.enable = true;
   # services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
@@ -234,36 +234,43 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-programs.sway = {
-  enable = true;
-  wrapperFeatures.gtk = true;
-};
- programs.light.enable = true;
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  # };
+  programs.light.enable = true;
 
-#   security.polkit.enable = true;
-#   security.pam.services.swaylock = { };
+  #   security.polkit.enable = true;
+  #   security.pam.services.swaylock = { };
 
-   programs.nixvim = {
-     enable = true;
-# +    package = inputs.nixpkgs.legacyPackages.${pkgs.system}.neovim;
-     colorschemes.catppuccin.enable = true;
-     plugins.lualine.enable = true;
-   };
-  
-stylix = {
-  enable = true;
-  base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-  fonts = {
-    emoji = {
-      package = pkgs.noto-fonts-emoji;
-      name = "Noto Color Emoji";
+  #    programs.nixvim = {
+  #      enable = true;
+  # # +    package = inputs.nixpkgs.legacyPackages.${pkgs.system}.neovim;
+  #      colorschemes.catppuccin.enable = true;
+  #      plugins.lualine.enable = true;
+  #    };
+
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    fonts = {
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
     };
+    # image = pkgs.fetchurl {
+    #    url = "https://www.pixelstalk.net/wp-content/uploads/2016/07/Desert-Background-Download-Free.jpg";
+    #    # sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
+    #  };
+    image = /home/guoyi/nix/pics/Desert-Background-Download-Free.jpg;
   };
- # image = pkgs.fetchurl {
- #    url = "https://www.pixelstalk.net/wp-content/uploads/2016/07/Desert-Background-Download-Free.jpg";
- #    # sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
- #  };
-    image=/home/guoyi/nix/pics/Desert-Background-Download-Free.jpg;
-};
+  programs.hyprland = {
+    enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
 }
 

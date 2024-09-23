@@ -25,26 +25,28 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     stylix.url = "github:danth/stylix";
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
   };
 
-  inputs.nixvim = {
-    # url = "github:nix-community/nixvim";
-    # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-    url = "github:nix-community/nixvim/nixos-24.05";
+  # inputs.nixvim = {
+  #   # url = "github:nix-community/nixvim";
+  #   # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+  #   url = "github:nix-community/nixvim/nixos-24.05";
+  #
+  #   inputs.nixpkgs.follows = "nixpkgs";
+  # };
 
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
-
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixvim, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }: {
     nixosConfigurations = {
       # 这里的 nixos-test 替换成你的主机名称
       surface = nixpkgs.lib.nixosSystem rec {
 
-        specialArgs={inherit inputs;};
+        specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
-        inputs.stylix.nixosModules.stylix
-        inputs.nixvim.nixosModules.nixvim
+          inputs.stylix.nixosModules.stylix
           {
             nixpkgs.overlays = [
               (final: prev: {
@@ -78,11 +80,10 @@
       };
 
       t440 = nixpkgs.lib.nixosSystem rec {
-        specialArgs={inherit inputs;};
+        specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
-        inputs.stylix.nixosModules.stylix
-        inputs.nixvim.nixosModules.nixvim
+          inputs.stylix.nixosModules.stylix
           {
             nixpkgs.overlays = [
               (final: prev: {
