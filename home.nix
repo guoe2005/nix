@@ -126,7 +126,8 @@
   stylix.targets.swaylock.useImage = true;
   # home.file.".config/sway/config".source = /home/guoyi/nix/sway/config;
   # home.file.".i3/config".source = /home/guoyi/nix/sway/i3/config;
-  home.file.".config/hypr/hyprland.conf".source = /home/guoyi/nix/hypr/hyprland.conf;
+  home.file.".config/hypr/hyprland.conf".source = /home/guoyi/nix/config/hypr/hyprland.conf;
+  home.file.".config/waybar/config".source = /home/guoyi/nix/config/waybar/config;
 
   home.packages = with pkgs;[
     unstable.neovim

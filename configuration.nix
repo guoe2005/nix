@@ -8,7 +8,7 @@
   imports =
     [
       # Include the results of the hardware scan.
-      /home/guoyi/nix/hosts.nix
+      /home/guoyi/nix/etc/hosts.nix
       /etc/nixos/hardware-configuration.nix
     ];
 
@@ -264,7 +264,7 @@
     #    url = "https://www.pixelstalk.net/wp-content/uploads/2016/07/Desert-Background-Download-Free.jpg";
     #    # sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
     #  };
-    image = /home/guoyi/nix/pics/Desert-Background-Download-Free.jpg;
+    image = /home/guoyi/nix/lib/pics/Desert-Background-Download-Free.jpg;
   };
   programs.hyprland = {
     enable = true;
@@ -289,5 +289,9 @@
     "8.8.8.8"
     "8.8.4.4"
   ];
+  programs.waybar = {
+  enable = true;
+  # package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
+  };
 }
 
