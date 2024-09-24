@@ -153,9 +153,17 @@
   };
 
   i18n.inputMethod = {
-    enabled = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [
-      libpinyin
+    # enabled = "ibus";
+    # ibus.engines = with pkgs.ibus-engines; [
+    #   libpinyin
+    # ];
+    enabled = "fcitx5";
+    # waylandFrontend = true;
+    fcitx5.addons = with pkgs; [
+      fcitx5-gtk # alternatively, kdePackages.fcitx5-qt
+      fcitx5-chinese-addons # table input method support
+      fcitx5-nord
+      fcitx5-rime # a color theme
     ];
   };
 
@@ -215,14 +223,14 @@
   ];
 
   # Enable the Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver = {
-  # enable = true;
-  #   # dpi = 180;
-  #   desktopManager = {
-  #     gnome.enable = true;
-  #   };
-  # };
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver = {
+    enable = true;
+    #   # dpi = 180;
+    #   desktopManager = {
+    #     gnome.enable = true;
+    #   };
+  };
 
   # services.xserver.windowManager.dwm.enable = true;
   # services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
@@ -243,13 +251,6 @@
   #   security.polkit.enable = true;
   #   security.pam.services.swaylock = { };
 
-  #    programs.nixvim = {
-  #      enable = true;
-  # # +    package = inputs.nixpkgs.legacyPackages.${pkgs.system}.neovim;
-  #      colorschemes.catppuccin.enable = true;
-  #      plugins.lualine.enable = true;
-  #    };
-
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
@@ -267,10 +268,10 @@
   };
   programs.hyprland = {
     enable = true;
-    # set the flake package
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # make sure to also set the portal package, so that they are in sync
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    #   # set the flake package
+    #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    #   # make sure to also set the portal package, so that they are in sync
+    #   portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 }
 

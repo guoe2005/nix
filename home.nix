@@ -124,24 +124,26 @@
   };
 
   stylix.targets.swaylock.useImage = true;
-  home.file.".config/sway/config".source = /home/guoyi/nix/sway/config;
-  home.file.".i3/config".source = /home/guoyi/nix/sway/i3/config;
+  # home.file.".config/sway/config".source = /home/guoyi/nix/sway/config;
+  # home.file.".i3/config".source = /home/guoyi/nix/sway/i3/config;
+  home.file.".config/hypr/hyprland.conf".source = /home/guoyi/nix/hypr/hyprland.conf;
 
   home.packages = with pkgs;[
     unstable.neovim
-    microsoft-edge
+    # microsoft-edge-dev
     zip
+    firefox
     xclip
     gtypist
     unzip
     dmenu
     nnn
-    j4-dmenu-desktop
-    i3blocks
-    bemenu
+    # j4-dmenu-desktop
+    # bemenu
     mpv
     nix-output-monitor
     lazygit
+    wofi
     (nerdfonts.override {
       fonts = [ "NerdFontsSymbolsOnly" ];
     })
