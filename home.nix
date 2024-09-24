@@ -127,7 +127,8 @@
   # home.file.".config/sway/config".source = /home/guoyi/nix/sway/config;
   # home.file.".i3/config".source = /home/guoyi/nix/sway/i3/config;
   home.file.".config/hypr/hyprland.conf".source = /home/guoyi/nix/config/hypr/hyprland.conf;
-  home.file.".config/waybar/config".source = /home/guoyi/nix/config/waybar/config;
+  home.file.".config/waybar/".source = /home/guoyi/nix/config/waybar;
+  home.file.".config/nvim".source = /home/guoyi/nix/config/nvim;
 
   home.packages = with pkgs;[
     unstable.neovim
@@ -142,6 +143,7 @@
     # j4-dmenu-desktop
     # bemenu
     mpv
+    waybar
     nix-output-monitor
     lazygit
     wofi
@@ -149,5 +151,20 @@
       fonts = [ "NerdFontsSymbolsOnly" ];
     })
   ];
-
+  # programs.waybar = {
+  #   enable = true;
+  #   style = (builtins.readFile /home/guoyi/nix/config/waybar/style.css);
+  #   settings = [
+  #     {
+  #       mainBar = {
+  #         layer = "top";
+  #         position = "top";
+  #         height = 30;
+  #         modules-left = [ ];
+  #         modules-center = [ ];
+  #         modules-right = [ ];
+  #       };
+  #     }
+  #   ];
+  # };
 }

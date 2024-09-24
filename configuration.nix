@@ -160,7 +160,7 @@
     enabled = "fcitx5";
     # waylandFrontend = true;
     fcitx5.addons = with pkgs; [
-      fcitx5-gtk # alternatively, kdePackages.fcitx5-qt
+      # fcitx5-gtk # alternatively, kdePackages.fcitx5-qt
       fcitx5-chinese-addons # table input method support
       fcitx5-nord
       fcitx5-rime # a color theme
@@ -270,6 +270,7 @@
     enable = true;
     #   # set the flake package
     #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # package = hyprpaper;
     #   # make sure to also set the portal package, so that they are in sync
     #   portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
@@ -289,9 +290,9 @@
     "8.8.8.8"
     "8.8.4.4"
   ];
-  programs.waybar = {
-  enable = true;
-  # package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
-  };
+  # programs.waybar = {
+  #   enable = true;
+  #   # package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
+  # };
 }
 
