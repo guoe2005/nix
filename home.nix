@@ -141,8 +141,8 @@
     unzip
     dmenu
     nnn
-    # j4-dmenu-desktop
-    # bemenu
+    j4-dmenu-desktop
+    bemenu
     mpv
     waybar
     nix-output-monitor
