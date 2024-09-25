@@ -127,7 +127,8 @@
   # home.file.".config/sway/config".source = /home/guoyi/nix/sway/config;
   # home.file.".i3/config".source = /home/guoyi/nix/sway/i3/config;
   home.file.".config/hypr/hyprland.conf".source = /home/guoyi/nix/config/hypr/hyprland.conf;
-  home.file.".config/waybar/".source = /home/guoyi/nix/config/waybar;
+  home.file.".config/waybar/config".source = /home/guoyi/nix/config/waybar/config.conf;
+  home.file.".config/waybar/style.css".source = /home/guoyi/nix/config/waybar/style.css;
   home.file.".config/nvim".source = /home/guoyi/nix/config/nvim;
 
   home.packages = with pkgs;[
@@ -166,5 +167,7 @@
   #       };
   #     }
   #   ];
+  #
+  #   # package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
   # };
 }

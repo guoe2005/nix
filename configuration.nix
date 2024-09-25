@@ -17,7 +17,14 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless =
+    {
+      enable = false;
+      # networks."9".psk = "11111111";
+      # extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
+    };
+  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.userControlled.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -199,7 +206,7 @@
   # screen locker
   # programs.xss-lock.enable = true;
 
-  programs.npm.package = true;
+  # programs.npm.package = true;
 
   environment.systemPackages = with pkgs; [
     gnome3.gnome-tweaks
@@ -223,7 +230,7 @@
   ];
 
   # Enable the Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.displayManager.sddm.enable = true;
   services.xserver = {
     enable = true;
     #   # dpi = 180;
