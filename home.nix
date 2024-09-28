@@ -140,7 +140,7 @@
       unstable.neovim
       microsoft-edge-dev
       zip
-      firefox
+      # firefox
       xclip
       gtypist
       unzip

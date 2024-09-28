@@ -304,5 +304,6 @@
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
 
