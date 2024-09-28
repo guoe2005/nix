@@ -17,12 +17,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless =
-    {
-      enable = false;
-      # networks."9".psk = "11111111";
-      # extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
-    };
+  # networking.wireless =
+  # {
+  #     enable = true;
+  #     # networks."9".psk = "11111111";
+  #     # extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
+  #   };
   # Enables wireless support via wpa_supplicant.
   # networking.wireless.userControlled.enable = true; # Enables wireless support via wpa_supplicant.
 
@@ -32,14 +32,14 @@
 
   #  Enable networking
   networking.networkmanager.enable = true;
-  # networking.wireless.iwd.settings = {
-  #   IPv6 = {
-  #     Enable = true;
-  #   };
-  #   Settings = {
-  #     AutoConnect = true;
-  #   };
-  # };
+  networking.wireless.iwd.settings = {
+    IPv6 = {
+      Enable = true;
+    };
+    Settings = {
+      AutoConnect = true;
+    };
+  };
   # system.activationScripts = {
   #   rfkillUnblockWlan = {
   #     text = ''
@@ -104,7 +104,7 @@
     isNormalUser = true;
     description = "guoyi";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkmanager" "video" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "storage" ];
     packages = with pkgs; [
     ];
   };
@@ -301,5 +301,8 @@
   #   enable = true;
   #   # package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
   # };
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 }
 

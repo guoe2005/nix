@@ -130,28 +130,37 @@
   home.file.".config/waybar/config".source = /home/guoyi/nix/config/waybar/config.conf;
   home.file.".config/waybar/style.css".source = /home/guoyi/nix/config/waybar/style.css;
   home.file.".config/nvim".source = /home/guoyi/nix/config/nvim;
+  home.file.".config/mako/config".source = /home/guoyi/nix/config/mako/config;
+  home.file.".config/tofi/config".source = /home/guoyi/nix/config/tofi/config;
+  home.file.".config/wofi/config".source = /home/guoyi/nix/config/wofi/config;
+  home.file.".config/alacritty/alacritty.toml".source = /home/guoyi/nix/config/alacritty/alacritty.toml;
 
-  home.packages = with pkgs;[
-    unstable.neovim
-    # microsoft-edge-dev
-    zip
-    firefox
-    xclip
-    gtypist
-    unzip
-    dmenu
-    nnn
-    j4-dmenu-desktop
-    bemenu
-    mpv
-    waybar
-    nix-output-monitor
-    lazygit
-    wofi
-    (nerdfonts.override {
-      fonts = [ "NerdFontsSymbolsOnly" ];
-    })
-  ];
+  home.packages = with pkgs;
+    [
+      unstable.neovim
+      microsoft-edge-dev
+      zip
+      firefox
+      xclip
+      gtypist
+      unzip
+      dmenu
+      # chromium
+      zathura
+      nnn
+      j4-dmenu-desktop
+      bemenu
+      rofi
+      mpv
+      waybar
+      alacritty
+      nix-output-monitor
+      lazygit
+      wofi
+      (nerdfonts.override {
+        fonts = [ "NerdFontsSymbolsOnly" ];
+      })
+    ];
   # programs.waybar = {
   #   enable = true;
   #   style = (builtins.readFile /home/guoyi/nix/config/waybar/style.css);
@@ -169,5 +178,13 @@
   #   ];
   #
   #   # package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
+  # };
+
+  #   enable = true;
+  #   extensions = with pkgs.vscode-extensions; [
+  #     dracula-theme.theme-dracula
+  #     vscodevim.vim
+  #     yzhang.markdown-all-in-one
+  #   ];
   # };
 }
