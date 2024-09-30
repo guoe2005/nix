@@ -167,7 +167,8 @@
     enabled = "fcitx5";
     # waylandFrontend = true;
     fcitx5.addons = with pkgs; [
-      # fcitx5-gtk # alternatively, kdePackages.fcitx5-qt
+      fcitx5-gtk # alternatively, kdePackages.fcitx5-qt
+      rime-data
       fcitx5-chinese-addons # table input method support
       fcitx5-nord
       fcitx5-rime # a color theme
