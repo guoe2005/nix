@@ -139,7 +139,7 @@
   home.packages = with pkgs;
     [
       unstable.neovim
-      microsoft-edge-beta
+      microsoft-edge
       zip
       firefox
       xclip
