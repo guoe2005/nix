@@ -163,6 +163,8 @@
     # enabled = "ibus";
     # ibus.engines = with pkgs.ibus-engines; [
     #   libpinyin
+    #   ibus-tweaker
+    #   ibus-engines
     # ];
     enabled = "fcitx5";
     # waylandFrontend = true;
