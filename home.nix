@@ -134,7 +134,7 @@
   home.file.".config/tofi/config".source = /home/guoyi/nix/config/tofi/config;
   home.file.".config/wofi/config".source = /home/guoyi/nix/config/wofi/config;
   home.file.".config/alacritty/alacritty.toml".source = /home/guoyi/nix/config/alacritty/alacritty.toml;
-  home.file.".config/fcitx5/conf/classicui.ini".source = /home/guoyi/nix/config/fcitx5/conf/classicui.conf;
+  home.file.".config/fcitx5/conf/classicui.conf".source = /home/guoyi/nix/config/fcitx5/conf/classicui.conf;
 
   home.packages = with pkgs;
     [
