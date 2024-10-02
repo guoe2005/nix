@@ -129,7 +129,7 @@
   home.file.".config/hypr/hyprland.conf".source = /home/guoyi/nix/config/hypr/hyprland.conf;
   home.file.".config/waybar/config".source = /home/guoyi/nix/config/waybar/config.conf;
   home.file.".config/waybar/style.css".source = /home/guoyi/nix/config/waybar/style.css;
-  home.file.".config/nvim".source = /home/guoyi/nix/config/nvim;
+  home.file.".config/nvim".source = /home/guoyi/nvim;
   home.file.".config/mako/config".source = /home/guoyi/nix/config/mako/config;
   home.file.".config/tofi/config".source = /home/guoyi/nix/config/tofi/config;
   home.file.".config/wofi/config".source = /home/guoyi/nix/config/wofi/config;
