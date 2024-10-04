@@ -18,39 +18,24 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
     stylix.url = "github:danth/stylix";
-
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    nixvim.url = "github:guoe2005/nixvim-config";
 
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, hyprland, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, hyprland, home-manager, ... }: {
     nixosConfigurations = {
       # 这里的 nixos-test 替换成你的主机名称
       surface = nixpkgs.lib.nixosSystem rec {
-        # pkgs = nixpkgs.legacyPackages.x86_64-linux;
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
           inputs.stylix.nixosModules.stylix
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-                # use this variant if unfree packages are needed:
-                # unstable = import nixpkgs-unstable {
-                #   inherit system;
-                #   config.allowUnfree = true;
-                # };
-              })
-            ];
-          }
           ./configuration.nix
           # 将 home-manager 配置为 nixos 的一个 module
           # 这样在 nixos-rebuild switch 时，home-manager 配置也会被自动部署
@@ -75,18 +60,6 @@
         system = "x86_64-linux";
         modules = [
           inputs.stylix.nixosModules.stylix
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-                # use this variant if unfree packages are needed:
-                # unstable = import nixpkgs-unstable {
-                #   inherit system;
-                #   config.allowUnfree = true;
-                # };
-              })
-            ];
-          }
           ./configuration.nix
           # 将 home-manager 配置为 nixos 的一个 module
           # 这样在 nixos-rebuild switch 时，home-manager 配置也会被自动部署
