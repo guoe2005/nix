@@ -23,12 +23,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nixvim.url = "github:guoe2005/nixvim-config";
-
   };
 
-  outputs = inputs@{ self, nixpkgs, hyprland, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
       # 这里的 nixos-test 替换成你的主机名称
       surface = nixpkgs.lib.nixosSystem rec {
