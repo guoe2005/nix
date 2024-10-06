@@ -1,19 +1,10 @@
 {
   imports = [
-    ./bufferline.nix
-    ./cmp.nix
-    ./git.nix
-    ./notify.nix
-    ./markview.nix
-    ./lightline.nix
     ./lsp/default.nix
     ./lsp/fidget.nix
     ./lsp/ionide.nix
     ./lsp/none-ls.nix
     ./lsp/trouble.nix
-    ./nvim-tree.nix
-    ./options.nix
-    ./treesitter.nix
     ./utils/auto-pairs.nix
     ./utils/autosave.nix
     ./utils/blankline.nix
@@ -21,7 +12,18 @@
     ./utils/toggleterm.nix
     ./utils/which-key.nix
     ./utils/wilder.nix
+    ./bufferline.nix
+    ./cmp.nix
+    ./git.nix
+    ./notify.nix
+    ./markview.nix
+    ./nvim-tree.nix
+    ./options.nix
+    ./treesitter.nix
+    ./lightline.nix
     ./lazygit.nix
+    ./neo-tree.nix
+    ./obsidian.nix
   ];
 
   colorschemes.dracula.enable = true;

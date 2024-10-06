@@ -24,7 +24,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    nixvim.url = "github:guoe2005/nixvim-config";
+    nixvim.url = "path:config/nixvim-config";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {

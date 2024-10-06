@@ -228,6 +228,7 @@
     gnomeExtensions.ibus-tweaker
     grim
     slurp
+    iptsd
     mako
     rofi
     go
@@ -380,5 +381,7 @@
 #
 #   ''}
 # '';
-}
+#   nixpkgs.overlays =
+#     [ (import /home/guoyi/nix/overlay-iptsd.nix) ];
+ }
 
