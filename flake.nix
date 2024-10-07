@@ -23,11 +23,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    nixvim.url = "path:config/nixvim-config";
+    nixvim.url = "path:/home/guoyi/nix/config/nixvim-config";
+    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, ... }: {
     nixosConfigurations = {
       # 这里的 nixos-test 替换成你的主机名称
       surface = nixpkgs.lib.nixosSystem rec {
@@ -36,6 +36,7 @@
         modules = [
           inputs.stylix.nixosModules.stylix
           ./configuration.nix
+          # nixos-hardware.nixosModules.microsoft-surface-pro-intel
           # 将 home-manager 配置为 nixos 的一个 module
           # 这样在 nixos-rebuild switch 时，home-manager 配置也会被自动部署
           home-manager.nixosModules.home-manager

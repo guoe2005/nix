@@ -12,11 +12,11 @@
     ./utils/toggleterm.nix
     ./utils/which-key.nix
     ./utils/wilder.nix
-    ./bufferline.nix
+    # ./bufferline.nix
     ./cmp.nix
     ./git.nix
     ./notify.nix
-    ./markview.nix
+    # ./markview.nix
     ./nvim-tree.nix
     ./options.nix
     ./treesitter.nix
@@ -40,9 +40,14 @@
     # Global
     # Default mode is "" which means normal-visual-op
     {
+    # {
+    #   key = "<C-n>";
+    #   action = "<CMD>NvimTreeToggle<CR>";
+    #   options.desc = "Toggle NvimTree";
+    # }
       key = "<C-n>";
-      action = "<CMD>NvimTreeToggle<CR>";
-      options.desc = "Toggle NvimTree";
+      action = "<CMD>Neotree<CR>";
+      options.desc = "Toggle NeoTree";
     }
     {
       key = "<leader>c";
@@ -210,4 +215,7 @@
       options.desc = "Start standalone rust-analyzer";
     }
   ];
+  extraConfigLua = ''
+    vim.opt.conceallevel = 1
+    '';
 }

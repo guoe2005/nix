@@ -371,6 +371,20 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1728056216,
+        "narHash": "sha256-IrO06gFUDTrTlIP3Sz+mRB6WUoO2YsgMtOD3zi0VEt0=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "b7ca02c7565fbf6d27ff20dd6dbd49c5b82eef28",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixos-hardware",
+        "type": "indirect"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1728018373,
@@ -440,13 +454,13 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-U8Y5md8c/iWUK5CEqPJD2XFPgpAm4uNcf6Cy3Nvoido=",
-        "path": "config/nixvim-config",
+        "lastModified": 1728187957,
+        "narHash": "sha256-Dn8TBPVKnWMoKJRtYM7tY19lkbbYwbrEccFEWqFcxzQ=",
+        "path": "/home/guoyi/nix/config/nixvim-config",
         "type": "path"
       },
       "original": {
-        "path": "config/nixvim-config",
+        "path": "/home/guoyi/nix/config/nixvim-config",
         "type": "path"
       }
     },
@@ -502,6 +516,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "stylix": "stylix"

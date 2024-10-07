@@ -103,7 +103,7 @@
   users.users.guoyi = {
     isNormalUser = true;
     description = "guoyi";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" "video" "storage" ];
     packages = with pkgs; [
     ];
@@ -312,8 +312,10 @@
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-   # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
+  
+  # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
   # nix.channel.enable = true; # remove nix-channel related tools & configs, we use flakes instead.
 
 #   services.xserver.displayManager.sessionCommands = ''
@@ -321,6 +323,7 @@
 #     Xcursor.theme: Adwaita
 #     Xcursor.size: 64
 #
+
 # xterm.termName: xterm-256color
 # xterm.geometry: 80x36
 # xterm*scrollBar: false
@@ -383,5 +386,13 @@
 # '';
 #   nixpkgs.overlays =
 #     [ (import /home/guoyi/nix/overlay-iptsd.nix) ];
+  
+#   boot.kernelPatches = [{
+#   name = "debug-info-config";
+#   patch = null;
+#   extraConfig = ''
+#     DEBUG_INFO_BTF n
+#   '';
+# }];
  }
 

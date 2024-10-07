@@ -51,39 +51,25 @@
   programs.home-manager.enable = true;
 
   # Enable zsh
-  programs.zsh = {
-    enable = true;
-    oh-my-zsh = {
-      enable = true;
-      theme = "gentoo";
-    };
-    plugins = [
-      {
-        name = "zsh-autosuggestions";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-autosuggestions";
-          rev = "v0.4.0";
-          sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
-        };
-      }
-    ];
-  };
-
-  # wayland.windowManager.sway = {
-  #  # enable = true;
-  #   config = rec {
-  #    # modifier = "Mod4";
-  #    # Use kitty as default terminal
-  #    # terminal = "st";
-  #     startup = [
-  #      # Launch start
-  #      { command = "microsoft-edge"; }
-  #       { command = "st"; }
-  #     ];
+  # programs.zsh = {
+  #   enable = true;
+  #   oh-my-zsh = {
+  #     enable = true;
+  #     theme = "gentoo";
   #   };
+  #   plugins = [
+  #     {
+  #       name = "zsh-autosuggestions";
+  #       src = pkgs.fetchFromGitHub {
+  #         owner = "zsh-users";
+  #         repo = "zsh-autosuggestions";
+  #         rev = "v0.4.0";
+  #         sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
+  #       };
+  #     }
+  #   ];
   # };
-
+  #
   programs.kitty = lib.mkForce {
     enable = true;
     settings = {
@@ -166,4 +152,7 @@
       })
       ripgrep
     ];
+  programs.fish={
+    enable=true;
+  };
 }
