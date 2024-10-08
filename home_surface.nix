@@ -79,7 +79,7 @@
       dynamic_background_opacity = true;
       enable_audio_bell = false;
       mouse_hide_wait = "-1.0";
-      window_padding_width = 10;
+      window_padding_width = 5;
       background_opacity = "0.8";
       background_blur = 5;
       symbol_map =

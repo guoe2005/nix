@@ -16,7 +16,7 @@
     ./cmp.nix
     ./git.nix
     ./notify.nix
-    # ./markview.nix
+    ./markview.nix
     ./nvim-tree.nix
     ./options.nix
     ./treesitter.nix

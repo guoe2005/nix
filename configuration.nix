@@ -15,7 +15,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless =
   # {
@@ -296,7 +296,7 @@
   # These options are unnecessary when managing DNS ourselves
   networking.useDHCP = false;
   networking.dhcpcd.enable = false;
-
+  systemd.services.NetworkManager-wait-online.enable = false;
   # Configure DNS servers manually (this example uses Cloudflare and Google DNS)
   # IPv6 DNS servers can be used here as well.
   networking.nameservers = [
