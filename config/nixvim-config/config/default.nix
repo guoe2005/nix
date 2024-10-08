@@ -23,9 +23,10 @@
     ./lightline.nix
     ./lazygit.nix
     ./neo-tree.nix
-    ./obsidian.nix
+   # ./obsidian.nix
+    ./plenary.nix
+    ./telekasten.nix
   ];
-
   colorschemes.dracula.enable = true;
   plugins.web-devicons.enable = true;
 
@@ -208,14 +209,22 @@
       action = "+rust";
     }
     {
-      # Start standalone rust-analyzer (fixes issues when opening files from nvim tree)
+      # Start standalone rust-analyzer (fixes issues when opening files fromvnvim tree)
       mode = "n";
       key = "<leader>rs";
       action = "<CMD>RustStartStandaloneServerForBuffer<CR>";
       options.desc = "Start standalone rust-analyzer";
     }
+    {
+      mode = "i";
+      key = "jj";
+      action = "<Esc>";
+    }
   ];
   extraConfigLua = ''
     vim.opt.conceallevel = 1
+    require('telekasten').setup({
+  home = vim.fn.expand("~/obsidian"), -- Put the name of your notes directory here
+    })
     '';
 }
