@@ -12,7 +12,7 @@
     ./utils/toggleterm.nix
     ./utils/which-key.nix
     ./utils/wilder.nix
-    # ./bufferline.nix
+    ./bufferline.nix
     ./cmp.nix
     ./git.nix
     ./notify.nix
@@ -26,6 +26,7 @@
    # ./obsidian.nix
     ./plenary.nix
     ./telekasten.nix
+    ./plugins.nix
   ];
   colorschemes.dracula.enable = true;
   plugins.web-devicons.enable = true;
@@ -34,6 +35,11 @@
 
   extraConfigVim = ''
     autocmd BufRead,BufNewFile *.pl set filetype=prolog
+    let g:lightline = {
+      \ 'enable': {
+      \   'tabline': 0
+      \ }
+      \ }
   '';
 
   globals.mapleader = " ";
@@ -220,11 +226,21 @@
       key = "jj";
       action = "<Esc>";
     }
+    {
+      mode = "n";
+      key = "<Leader>q";
+      action = "<CMD>Bdelete<CR>";
+    }
+    {
+      mode = "n";
+      key = "<C-b>";
+      action = "<CMD>BufferLineCycleNext<CR>";
+    }
   ];
   extraConfigLua = ''
     vim.opt.conceallevel = 1
     require('telekasten').setup({
-  home = vim.fn.expand("~/obsidian"), -- Put the name of your notes directory here
+  home = vim.fn.expand("~/Downloads/obsidian"), -- Put the name of your notes directory here
     })
     '';
 }

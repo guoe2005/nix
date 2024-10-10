@@ -106,7 +106,8 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" "video" "storage" ];
     packages = with pkgs; [
-      calibre
+      # calibre
+      foliate
     ];
   };
 
@@ -269,7 +270,7 @@
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
     fonts = {
       emoji = {
         package = pkgs.noto-fonts-emoji;
