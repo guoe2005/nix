@@ -9,7 +9,6 @@
     [
       # Include the results of the hardware scan.
       /home/guoyi/nix/etc/hosts.nix
-      # /etc/nixos/hardware-configuration.nix
     ];
 
   # Bootloader.
