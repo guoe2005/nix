@@ -106,8 +106,7 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" "video" "storage" ];
     packages = with pkgs; [
-      # calibre
-      foliate
+      calibre
     ];
   };
 
@@ -270,7 +269,7 @@
 
   stylix = {
     enable = true;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     fonts = {
       emoji = {
         package = pkgs.noto-fonts-emoji;
@@ -283,7 +282,6 @@
     #  };
     image = /home/guoyi/nix/lib/pics/Desert-Background-Download-Free.jpg;
   };
-
   programs.hyprland = {
     enable = true;
     #   # set the flake package
