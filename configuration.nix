@@ -16,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  networking.hostName = "surface"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
   networking.wireless =
     {
       enable = true;

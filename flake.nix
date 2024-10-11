@@ -30,7 +30,7 @@
   outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, ... }: {
     nixosConfigurations = {
       # 这里的 nixos-test 替换成你的主机名称
-      surface = nixpkgs.lib.nixosSystem rec {
+      nixos = nixpkgs.lib.nixosSystem rec {
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
