@@ -141,6 +141,7 @@
       lazygit
       wofi
       ripgrep
+      kdePackages.kdeconnect-kde
     ];
   };
 
