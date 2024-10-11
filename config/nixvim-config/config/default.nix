@@ -25,7 +25,7 @@
     ./neo-tree.nix
    # ./obsidian.nix
     ./plenary.nix
-    ./telekasten.nix
+    # ./telekasten.nix
     ./plugins.nix
   ];
   colorschemes.dracula.enable = true;
@@ -239,8 +239,8 @@
   ];
   extraConfigLua = ''
     vim.opt.conceallevel = 1
-    require('telekasten').setup({
-  home = vim.fn.expand("~/Downloads/obsidian"), -- Put the name of your notes directory here
-    })
+  --   require('telekasten').setup({
+  -- home = vim.fn.expand("~/Downloads/obsidian"), -- Put the name of your notes directory here
+    -- })
     '';
 }

@@ -110,18 +110,18 @@
   };
 
   stylix.targets.swaylock.useImage = true;
-  # home.file.".config/sway/config".source = /home/guoyi/nix/sway/config;
-  # home.file.".i3/config".source = /home/guoyi/nix/sway/i3/config;
-  home.file.".config/hypr/hyprland.conf".source = /home/guoyi/nix/config/hypr/hyprland.conf;
-  home.file.".config/waybar/config".source = /home/guoyi/nix/config/waybar/config.conf;
-  home.file.".config/waybar/style.css".source = /home/guoyi/nix/config/waybar/style.css;
-  # home.file.".config/nvim".source = /home/guoyi/nvim;
-  home.file.".config/mako/config".source = /home/guoyi/nix/config/mako/config;
-  home.file.".config/tofi/config".source = /home/guoyi/nix/config/tofi/config;
-  home.file.".config/wofi/config".source = /home/guoyi/nix/config/wofi/config;
-  home.file.".config/alacritty/alacritty.toml".source = /home/guoyi/nix/config/alacritty/alacritty.toml;
-  home.file.".config/fcitx5/conf/classicui.conf".source = /home/guoyi/nix/config/fcitx5/conf/classicui.conf;
-  home.file.".zshrc".source = /home/guoyi/nix/config/zshrc;
+  # home.file.".config/sway/config".source = ./sway/config;
+  # home.file.".i3/config".source = ./sway/i3/config;
+  home.file.".config/hypr/hyprland.conf".source = ./config/hypr/hyprland_t440.conf;
+  home.file.".config/waybar/config".source = ./config/waybar/config.conf;
+  home.file.".config/waybar/style.css".source = ./config/waybar/style.css;
+  # home.file.".config/nvim".source = ./nvim;
+  home.file.".config/mako/config".source = ./config/mako/config;
+  home.file.".config/tofi/config".source = ./config/tofi/config;
+  home.file.".config/wofi/config".source = ./config/wofi/config;
+  home.file.".config/alacritty/alacritty.toml".source = ./config/alacritty/alacritty.toml;
+  home.file.".config/fcitx5/conf/classicui.conf".source = ./config/fcitx5/conf/classicui.conf;
+  home.file.".zshrc".source = ./config/zshrc;
   home.packages = with pkgs;
     [
       # neovim

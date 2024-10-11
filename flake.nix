@@ -23,7 +23,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
-    nixvim.url = "path:/home/guoyi/nix/config/nixvim-config";
+    nixvim.url = "path:./config/nixvim-config";
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
@@ -36,7 +36,7 @@
         modules = [
           inputs.stylix.nixosModules.stylix
           ./configuration.nix
-          /home/guoyi/nix/hardware-configuration_surface.nix
+          ./hardware-configuration_surface.nix
           # nixos-hardware.nixosModules.microsoft-surface-pro-intel
           # 将 home-manager 配置为 nixos 的一个 module
           # 这样在 nixos-rebuild switch 时，home-manager 配置也会被自动部署
@@ -47,7 +47,7 @@
 
             # 这里的 ryan 也得替换成你的用户名
             # 这里的 import 函数在前面 Nix 语法中介绍过了，不再赘述
-            home-manager.users.guoyi = import /home/guoyi/nix/home_surface.nix;
+            home-manager.users.guoyi = import ./home_surface.nix;
 
             # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
             # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
@@ -71,7 +71,7 @@
 
             # 这里的 ryan 也得替换成你的用户名
             # 这里的 import 函数在前面 Nix 语法中介绍过了，不再赘述
-            home-manager.users.guoyi = import /home/guoyi/nix/home_t440.nix;
+            home-manager.users.guoyi = import ./home_t440.nix;
 
             # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
             # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了

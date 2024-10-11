@@ -8,21 +8,26 @@
   imports =
     [
       # Include the results of the hardware scan.
-      /home/guoyi/nix/etc/hosts.nix
+      ./etc/hosts.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless =
-  # {
-  #     enable = true;
-  #     # networks."9".psk = "11111111";
-  #     # extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
-  #   };
-  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "surface"; # Define your hostname.
+  networking.wireless =
+    {
+      enable = true;
+      networks = {
+        "9" = {
+          psk = "11111111";
+          priority = 1;
+        };
+      };
+    };
+
+  #Enables wireless support via wpa_supplicant.
   # networking.wireless.userControlled.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -30,15 +35,15 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   #  Enable networking
-  networking.networkmanager.enable = true;
-  networking.wireless.iwd.settings = {
-    IPv6 = {
-      Enable = true;
-    };
-    Settings = {
-      AutoConnect = true;
-    };
-  };
+  # networking.networkmanager.enable = true;
+  # networking.wireless.iwd.settings = {
+  #   IPv6 = {
+  #     Enable = true;
+  #   };
+  #   Settings = {
+  #     AutoConnect = true;
+  #   };
+  # };
   # system.activationScripts = {
   #   rfkillUnblockWlan = {
   #     text = ''
@@ -102,11 +107,12 @@
   users.users.guoyi = {
     isNormalUser = true;
     description = "guoyi";
-    shell = pkgs.fish;
+    # shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" "video" "storage" ];
     packages = with pkgs; [
       # calibre
       foliate
+      nh
     ];
   };
 
@@ -234,7 +240,13 @@
     rofi
     go
     inputs.nixvim.packages.${system}.default
-    
+    fishPlugins.done
+    fishPlugins.fzf-fish
+    fishPlugins.forgit
+    fishPlugins.hydro
+    fzf
+    fishPlugins.grc
+    grc
   ];
 
 
@@ -250,7 +262,7 @@
 
   # services.xserver.windowManager.dwm.enable = true;
   # services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
-  #   src = /home/guoyi/nix/dwm-flexipatch;
+  #   src = ./nix/dwm-flexipatch;
   # };
 
   services.gnome.gnome-keyring.enable = true;
@@ -280,7 +292,7 @@
     #    url = "https://www.pixelstalk.net/wp-content/uploads/2016/07/Desert-Background-Download-Free.jpg";
     #    # sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
     #  };
-    image = /home/guoyi/nix/lib/pics/Desert-Background-Download-Free.jpg;
+    image = ./lib/pics/Desert-Background-Download-Free.jpg;
   };
   programs.hyprland = {
     enable = true;
@@ -295,8 +307,8 @@
   networking.networkmanager.dns = "none";
 
   # These options are unnecessary when managing DNS ourselves
-  networking.useDHCP = false;
-  networking.dhcpcd.enable = false;
+  # networking.useDHCP = false;
+  # networking.dhcpcd.enable = false;
   systemd.services.NetworkManager-wait-online.enable = false;
   # Configure DNS servers manually (this example uses Cloudflare and Google DNS)
   # IPv6 DNS servers can be used here as well.
@@ -386,7 +398,7 @@
 #   ''}
 # '';
 #   nixpkgs.overlays =
-#     [ (import /home/guoyi/nix/overlay-iptsd.nix) ];
+#     [ (import ./overlay-iptsd.nix) ];
   
 #   boot.kernelPatches = [{
 #   name = "debug-info-config";
@@ -395,5 +407,14 @@
 #     DEBUG_INFO_BTF n
 #   '';
 # }];
+  programs.bash = {
+  interactiveShellInit = ''
+    if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+    then
+      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+    fi
+  '';
+};
  }
 

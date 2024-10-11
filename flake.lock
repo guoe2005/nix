@@ -454,13 +454,13 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1728541427,
-        "narHash": "sha256-htQxJPo6zCtrmsbl8sGin/aq1zfxBp7wM5D612VjDWI=",
-        "path": "/home/guoyi/nix/config/nixvim-config",
+        "lastModified": 1,
+        "narHash": "sha256-GBQAYR9fyp0hEDatw9i19B3vS/Mnx2obL+x7Fy0a+JI=",
+        "path": "./config/nixvim-config",
         "type": "path"
       },
       "original": {
-        "path": "/home/guoyi/nix/config/nixvim-config",
+        "path": "./config/nixvim-config",
         "type": "path"
       }
     },
