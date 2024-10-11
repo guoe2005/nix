@@ -125,6 +125,9 @@
   home.file.".config/fish/functions/functions.fish".source = ./config/fish/functions.fish;
   home.packages = with pkgs;
     [
+      (nerdfonts.override {
+        fonts = [ "NerdFontsSymbolsOnly" ];
+      })
     ];
   # programs.fish={
   #   enable=true;

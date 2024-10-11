@@ -15,6 +15,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
+
   networking.hostName = "surface"; # Define your hostname.
   networking.wireless =
     {
@@ -27,6 +28,9 @@
       };
     };
 
+  # networking.useDHCP = false;
+  # networking.dhcpcd.enable = false;
+  # systemd.services.NetworkManager-wait-online.enable = false;
   #Enables wireless support via wpa_supplicant.
   # networking.wireless.userControlled.enable = true; # Enables wireless support via wpa_supplicant.
 
@@ -136,9 +140,6 @@
       # nix-output-monitor
       lazygit
       wofi
-      (nerdfonts.override {
-        fonts = [ "NerdFontsSymbolsOnly" ];
-      })
       ripgrep
     ];
   };
@@ -334,9 +335,6 @@
   networking.networkmanager.dns = "none";
 
   # These options are unnecessary when managing DNS ourselves
-  # networking.useDHCP = false;
-  # networking.dhcpcd.enable = false;
-  systemd.services.NetworkManager-wait-online.enable = false;
   # Configure DNS servers manually (this example uses Cloudflare and Google DNS)
   # IPv6 DNS servers can be used here as well.
   networking.nameservers = [
