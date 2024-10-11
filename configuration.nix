@@ -17,16 +17,7 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless =
-    {
-      enable = true;
-      networks = {
-        "9" = {
-          psk = "11111111";
-          priority = 1;
-        };
-      };
-    };
+  
 
   # networking.useDHCP = false;
   # networking.dhcpcd.enable = false;
@@ -39,7 +30,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   #  Enable networking
-  # networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true;
   # networking.wireless.iwd.settings = {
   #   IPv6 = {
   #     Enable = true;
