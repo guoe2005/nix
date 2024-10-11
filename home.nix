@@ -28,8 +28,8 @@
     userEmail = "guoe2005@126.com";
     extraConfig = {
       credential.helper = "${
-          pkgs.git.override { withLibsecret = true; }
-        }/bin/git-credential-libsecret";
+      pkgs.git.override { withLibsecret = true; }
+    }/bin/git-credential-libsecret";
       push = { autoSetupRemote = true; };
     };
   };
@@ -105,7 +105,7 @@
             "U+E5FA-U+E62B"
           ];
         in
-        (builtins.concatStringsSep "," mappings) + " Symbols Nerd Font";
+          (builtins.concatStringsSep "," mappings) + " Symbols Nerd Font";
     };
   };
 
@@ -132,4 +132,5 @@
   # programs.fish={
   #   enable=true;
   # };
-}
+services.kdeconnect.enable=true;
+  }
