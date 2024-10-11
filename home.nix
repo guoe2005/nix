@@ -112,7 +112,7 @@
   stylix.targets.swaylock.useImage = true;
   # home.file.".config/sway/config".source = ./sway/config;
   # home.file.".i3/config".source = ./sway/i3/config;
-  home.file.".config/hypr/hyprland.conf".source = ./config/hypr/hyprland_t440.conf;
+  home.file.".config/hypr/hyprland.conf".source = ./config/hypr/hyprland.conf;
   home.file.".config/waybar/config".source = ./config/waybar/config.conf;
   home.file.".config/waybar/style.css".source = ./config/waybar/style.css;
   # home.file.".config/nvim".source = ./nvim;
@@ -122,37 +122,11 @@
   home.file.".config/alacritty/alacritty.toml".source = ./config/alacritty/alacritty.toml;
   home.file.".config/fcitx5/conf/classicui.conf".source = ./config/fcitx5/conf/classicui.conf;
   home.file.".zshrc".source = ./config/zshrc;
+  home.file.".config/fish/functions/functions.fish".source = ./config/fish/functions.fish;
   home.packages = with pkgs;
     [
-      # neovim
-      microsoft-edge
-      zip
-      firefox
-      xclip
-      gtypist
-      unzip
-      dmenu
-      # chromium
-      obsidian
-      v2raya
-      zathura
-      nnn
-      j4-dmenu-desktop
-      bemenu
-      python3
-      rofi
-      mpv
-      waybar
-      alacritty
-      nix-output-monitor
-      lazygit
-      wofi
-      (nerdfonts.override {
-        fonts = [ "NerdFontsSymbolsOnly" ];
-      })
-      ripgrep
     ];
-  programs.fish={
-    enable=true;
-  };
+  # programs.fish={
+  #   enable=true;
+  # };
 }

@@ -113,6 +113,33 @@
       # calibre
       foliate
       nh
+      # microsoft-edge
+      zip
+      firefox
+      xclip
+      fish
+      gtypist
+      unzip
+      dmenu
+      # chromium
+      obsidian
+      # v2raya
+      zathura
+      nnn
+      # j4-dmenu-desktop
+      # bemenu
+      python3
+      rofi
+      mpv
+      waybar
+      alacritty
+      # nix-output-monitor
+      lazygit
+      wofi
+      (nerdfonts.override {
+        fonts = [ "NerdFontsSymbolsOnly" ];
+      })
+      ripgrep
     ];
   };
 
