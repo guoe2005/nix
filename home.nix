@@ -112,9 +112,9 @@
   stylix.targets.swaylock.useImage = true;
   # home.file.".config/sway/config".source = ./sway/config;
   # home.file.".i3/config".source = ./sway/i3/config;
-  home.file.".config/hypr/hyprland.conf".source = /home/guoyi/nixFiles/hyprland.conf;
-  home.file.".config/waybar/config".source = ./config/waybar/config;
-  home.file.".config/waybar/style.css".source = ./config/waybar/style.css;
+  home.file.".config/hypr/hyprland.conf".source = ./config/hypr/hyprland.conf;
+  # home.file.".config/waybar/config".source = ./config/waybar/config;
+  # home.file.".config/waybar/style.css".source = ./config/waybar/style.css;
   # home.file.".config/nvim".source = ./nvim;
   home.file.".config/mako/config".source = ./config/mako/config;
   home.file.".config/tofi/config".source = ./config/tofi/config;

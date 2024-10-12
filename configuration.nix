@@ -9,27 +9,39 @@
     [
       # Include the results of the hardware scan.
       ./etc/hosts.nix
+      /home/guoyi/nix/hardware-configuration.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+
 
   networking.hostName = "nixos"; # Define your hostname.
-  
+
+
+ # networking.wireless.iwd.enable = true; #iwd
+ #  networking.wireless.iwd.settings = {
+ #    General = { EnableNetworkConfiguration = true; };
+ #  };
+ #  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+ #  networking.dhcpcd.enable = false;
+ #  networking.useNetworkd = true;
+ #  networking.useDHCP = false;
+ #
 
   # networking.useDHCP = false;
   # networking.dhcpcd.enable = false;
-  # systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.services.NetworkManager-wait-online.enable = true;
   #Enables wireless support via wpa_supplicant.
   # networking.wireless.userControlled.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  #  Enable networking
+   #  Enable networking
   networking.networkmanager.enable = true;
   # networking.wireless.iwd.settings = {
   #   IPv6 = {
@@ -126,7 +138,6 @@
       python3
       rofi
       mpv
-      waybar
       alacritty
       # nix-output-monitor
       lazygit
@@ -266,6 +277,7 @@
     fishPlugins.hydro
     fzf
     fishPlugins.grc
+    eww-wayland
     grc
   ];
 
@@ -318,9 +330,9 @@
     enable = true;
     #   # set the flake package
     #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # package = hyprpaper;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     #   # make sure to also set the portal package, so that they are in sync
-    #   portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   # Disable NetworkManager's internal DNS resolution
@@ -425,13 +437,19 @@
 #   '';
 # }];
   programs.bash = {
-  interactiveShellInit = ''
+    interactiveShellInit = ''
     if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
     then
       shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
       exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
     fi
-  '';
-};
- }
+    '';
+   }; 
+  programs.waybar = {
+    enable = true;
+    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    });
+  };
+}
 
