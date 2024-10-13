@@ -124,6 +124,7 @@
       zip
       firefox
       xclip
+      v2raya
       fish
       gtypist
       unzip
@@ -143,7 +144,6 @@
       lazygit
       wofi
       ripgrep
-      kdePackages.kdeconnect-kde
     ];
   };
 
@@ -256,14 +256,14 @@
     nodejs
     wl-clipboard
     rustup
-    rust-analyzer
-    gnomeExtensions.dash-to-panel
+    # rust-analyzer
+    # gnomeExtensions.dash-to-panel
     clang
-    flat-remix-gnome
+    # flat-remix-gnome
     android-tools
     cmake
     gnumake
-    gnomeExtensions.ibus-tweaker
+    # gnomeExtensions.ibus-tweaker
     grim
     slurp
     iptsd
@@ -271,13 +271,13 @@
     rofi
     go
     inputs.nixvim.packages.${system}.default
-    fishPlugins.done
-    fishPlugins.fzf-fish
-    fishPlugins.forgit
-    fishPlugins.hydro
+    # fishPlugins.done
+    # fishPlugins.fzf-fish
+    # fishPlugins.forgit
+    # fishPlugins.hydro
     fzf
-    fishPlugins.grc
-    eww-wayland
+    # fishPlugins.grc
+    eww
     grc
   ];
 
@@ -297,7 +297,7 @@
   #   src = ./nix/dwm-flexipatch;
   # };
 
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -330,9 +330,9 @@
     enable = true;
     #   # set the flake package
     #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     #   # make sure to also set the portal package, so that they are in sync
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   # Disable NetworkManager's internal DNS resolution
@@ -447,9 +447,9 @@
    }; 
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    });
+    # package = pkgs.waybar.overrideAttrs (oldAttrs: {
+    #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    # });
   };
 }
 

@@ -235,7 +235,12 @@
       mode = "n";
       key = "<C-b>";
       action = "<CMD>BufferLineCycleNext<CR>";
+    }{
+      mode = "n";
+      key = "<Leader>e";
+      action = "<CMD>q!<CR>";
     }
+
   ];
   extraConfigLua = ''
     vim.opt.conceallevel = 1

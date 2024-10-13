@@ -113,15 +113,16 @@
   # home.file.".config/sway/config".source = ./sway/config;
   # home.file.".i3/config".source = ./sway/i3/config;
   home.file.".config/hypr/hyprland.conf".source = ./config/hypr/hyprland.conf;
-  # home.file.".config/waybar/config".source = ./config/waybar/config;
-  # home.file.".config/waybar/style.css".source = ./config/waybar/style.css;
+  home.file.".config/waybar/style.css".source = /home/guoyi/nix/config/waybar/style.css;
+  home.file.".config/waybar/config".source = /home/guoyi/nix/config/waybar/config;
   # home.file.".config/nvim".source = ./nvim;
-  home.file.".config/mako/config".source = ./config/mako/config;
-  home.file.".config/tofi/config".source = ./config/tofi/config;
+  # home.file.".config/mako/config".source = ./config/mako/config;
+  # home.file.".config/tofi/config".source = ./config/tofi/config;
   home.file.".config/wofi/config".source = ./config/wofi/config;
+  home.file.".config/wofi/style.css".source = ./config/wofi/style.css;
   home.file.".config/alacritty/alacritty.toml".source = ./config/alacritty/alacritty.toml;
   home.file.".config/fcitx5/conf/classicui.conf".source = ./config/fcitx5/conf/classicui.conf;
-  home.file.".zshrc".source = ./config/zshrc;
+  # home.file.".zshrc".source = ./config/zshrc;
   home.file.".config/fish/functions/functions.fish".source = ./config/fish/functions.fish;
   home.packages = with pkgs;
     [

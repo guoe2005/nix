@@ -1,57 +1,46 @@
-# background_opacity = 0.8
-live_config_reload = true
 
-[colors]
-draw_bold_text_with_bright_colors = false
+window.padding.x = 12
+window.padding.y = 12
+window.opacity= 0.99
+import = [
+    "~/.config/alacritty/themes/themes/{theme}.toml"
+]
+# Colors (Alabaster Dark)
+# author tonsky
 
-[colors.bright]
-black = "0x2e3436"
-blue = "0x729fcf"
-cyan = "0x34e2e2"
-green = "0x8ae234"
-magenta = "0xad7fa8"
-red = "0xef2929"
-white = "0xeeeeec"
-yellow = "0xfce94f"
+[colors.primary]  
+background = '#0F0F0F'
+foreground = '#CECECE'
 
-[colors.normal]
-black = "0x2e3436"
-blue = "0x3465a4"
-cyan = "0x06989a"
-green = "0x73d216"
-magenta = "0x75507b"
-red = "0xcc0000"
-white = "0xd3d7cf"
-yellow = "0xedd400"
-
-[colors.primary]
-foreground = "0xeeeeec"
+[colors.cursor]
+text = '#0E1415'
+cursor = '#CECECE'
 
 [cursor]
-vi_mode_style = "None"
+style = 'beam'
+unfocused_hollow = false
 
-[cursor.style]
-blinking = "Off"
-shape = "Block"
 
-[env]
-TERM = "xterm-256color"
 
-[font]
-size = 16
+[colors.normal]
+black = '#0E1415'
+red = '#e25d56'
+green = '#55FF55'
+yellow = '#e9bf57'
+blue = '#4a88e4'
+magenta = '#915caf'
+cyan = '#23acdd'
+white = '#f0f0f0'
 
-[font.bold]
-family = "Fira Code"
-style = "Bold"
-
-[font.italic]
-family = "Hack"
-style = "Italic"
+[colors.bright]
+black = '#777777'
+red = '#f36868'
+green = '#55FF55'
+yellow = '#f0bf7a'
+blue = '#6f8fdb'
+magenta = '#e987e9'
+cyan = '#4ac9e2'
+white = '#FFFFFF'
 
 [font.normal]
-family = "Fira Code"
-style = "Regular"
-
-[font.offset]
-x = 1
-y = 0
+family = 'JetBrains Mono Nerd Font'
