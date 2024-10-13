@@ -1,2 +1,2 @@
-hardware-configuration.nix
-config/hypr/hyprland.conf
+hardware-configuration.nix merge=ours
+config/hypr/hyprland.conf merge=ours
