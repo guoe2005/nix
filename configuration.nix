@@ -9,13 +9,13 @@
     [
       # Include the results of the hardware scan.
       ./etc/hosts.nix
-      /home/guoyi/nix/hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
 
 
@@ -347,7 +347,6 @@
     "8.8.8.8"
     "8.8.4.4"
   ];
-  # programs.waybar = {
   #   enable = true;
   #   # package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
   # };
@@ -447,9 +446,9 @@
    }; 
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    });
+    # package = pkgs.waybar.overrideAttrs (oldAttrs: {
+    #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    # });
   };
 }
 
