@@ -19,10 +19,10 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
- # networking.wireless.iwd.enable = true; #iwd
- #  networking.wireless.iwd.settings = {
- #    General = { EnableNetworkConfiguration = true; };
- #  };
+  networking.wireless.iwd.enable = true; #iwd
+   networking.wireless.iwd.settings = {
+     General = { EnableNetworkConfiguration = true; };
+   };
  #  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
  #  networking.dhcpcd.enable = false;
  #  networking.useNetworkd = true;
@@ -279,6 +279,7 @@
     wireplumber
     nwg-look
     grc
+    jmtpfs
   ];
 
 
@@ -447,9 +448,14 @@
    }; 
   programs.waybar = {
     enable = false;
-    # package = pkgs.waybar.overrideAttrs (oldAttrs: {
+    # package = pkgs.waybar.overrideAttrs (oldAttrs: {#
     #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     # });
   };
+    programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  ];
 }
 

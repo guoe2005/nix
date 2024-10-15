@@ -121,7 +121,7 @@
   home.file.".config/wofi/config".source = ./config/wofi/config;
   home.file.".config/wofi/style.css".source = ./config/wofi/style.css;
   home.file.".config/alacritty/alacritty.toml".source = ./config/alacritty/alacritty.toml;
-  home.file.".config/fcitx5/conf/classicui.conf".source = ./config/fcitx5/conf/classicui.conf;
+  # home.file.".config/fcitx5/conf/classicui.conf".source = ./config/fcitx5/conf/classicui.conf;
   # home.file.".zshrc".source = ./config/zshrc;
   home.file.".config/fish/functions/functions.fish".source = ./config/fish/functions.fish;
   home.packages = with pkgs;

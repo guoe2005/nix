@@ -6,4 +6,7 @@ function lg
   lazygit
 end
 
+function n
+  nvim
+end
 

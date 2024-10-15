@@ -237,7 +237,7 @@
       action = "<CMD>BufferLineCycleNext<CR>";
     }{
       mode = "n";
-      key = "<Leader>e";
+      key = "<C-e>";
       action = "<CMD>q!<CR>";
     }
 
