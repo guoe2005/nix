@@ -9,13 +9,13 @@
     [
       # Include the results of the hardware scan.
       ./etc/hosts.nix
-      /home/guoyi/nix/hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   networking.hostName = "nixos"; # Define your hostname.
 
