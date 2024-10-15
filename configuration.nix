@@ -280,6 +280,7 @@
     nwg-look
     grc
     jmtpfs
+    pcmanfm
   ];
 
 
