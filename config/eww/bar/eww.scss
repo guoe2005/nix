@@ -1,126 +1,127 @@
-$rosewater: #f5e0dc;
-$flamingo: #f2cdcd;
-$pink: #f5c2e7;
-$mauve: #cba6f7;
-$red: #f38ba8;
-$maroon: #eba0ac;
-$peach: #fab387;
-$yellow: #f9e2af;
-$green: #a6e3a1;
-$teal: #94e2d5;
-$sky: #89dceb;
-$sapphire: #74c7ec;
-$blue: #89b4fa;
-$lavender: #b4befe;
-$text: #cdd6f4;
-$subtext1: #bac2de;
-$subtext0: #a6adc8;
-$overlay2: #9399b2;
-$overlay1: #7f849c;
-$overlay0: #6c7086;
-$surface2: #585b70;
-$surface1: #45475a;
-$surface0: #313244;
-$base: #1e1e2e;
-$mantle: #181825;
-$crust: #11111b;
-
-
 * {
   all: unset;
 }
 
 window {
-  font-family: "NotoSans Nerd Font", sans-serif;
-  background-color: $base;
+  background: #282828;
+  color: #ebdbb2;
+  font-size: 14px;
+
+  & > * {
+    margin: 3px;
+  }
+  font-family: "Terminus (TTF)";
 }
 
-.workspace {
-  margin: 3px;
-  padding: 0px;
+.workspaces {
+  button {
+    background: none;
+    margin: 3px;
+    padding-left: 1px;
+    &.inactive {
+      color: #888974;
+    }
+    &.active {
+      color: #8ec07c;
+    }
+    &.occupied {
+      font-size: 1.01rem;
+    }
+    &.empty {
+      font-size: 0.8rem;
+    }
+  }
 }
 
-.icon {
-  margin: 0 5px;
-  color: $text;
+.segment-top {
+  margin-top: 10px;
 }
 
-.icon.single-icon {
+.segment-bottom {
+  margin-bottom: 10px;
+}
+
+.volume-metric {
+  background-color: #1d2021;
+  color: #ebdbb2;
+  padding: 0;
+
+  .volume-top > scale {
+    margin-bottom: 5px;
+  }
+
+  slider {
+    all: unset;
+  }
+
+  scale trough highlight {
+    all: unset;
+    //background-color: #8ec07c;
+    background-color: #665c54;
+    border-bottom-right-radius: 5px;
+  }
+  scale trough {
+    all: unset;
+    background-color: #1d2021;
+    min-width: 34px;
+    min-height: 2px;
+  }
+}
+
+.large-symbol {
+  font-size: 0.8em;
+}
+
+.metric {
+  background-color: #1d2021;
+  padding: 5px 2px;
+}
+.metric-icon {
+  font-family: "Font Awesome 6 Free";
+  font-size: 0.7em;
+}
+
+.time {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: #a89984;
+}
+
+
+
+
+
+.music_popup {
+  all: unset;
+  background-color: #1d2021;
+  padding: 0px 20px;
   margin: 0;
 }
 
-.mic {
-  .icon.running {
-    color: $green;
-  }
-}
+// System Tray
+menu {
+	padding: 5px 5px;
+  background-color: #1d2021;
 
-.workspace {
-  .icon {
-  margin: 0 3px;
-  font-size: 10px;
-    }
-  .name {
-    background-color: $base;
-  }
-}
+	>menuitem {
+    font-size: 14px;
+		padding: 2px 5px;
+    //color: $foreground;
 
-.workspace.focused {
-  .icon {
-    color: $text;
-  }
-}
+		&:disabled label {
+			color: #928374;
+		}
 
-.battery, .time, .date .tray .speakers .mic .wifi {
-  color: $text;
-  font-size: 10px;
-}
+		&:hover {
+      background-color: #282828;
+		}
+	}
 
-.battery {
-  .icon.critical {
-    color: $red;
-  }
-}
+	separator {
+		padding-top: 1px;
 
-.tooltip {
-  background-color: $surface0;
-  color: $text;
-  font-size: 10px;
-}
-.camera {
-  .icon.connected {
-    color: $green;
-  }
-}
-
-.icon.muted {
-  color: $red;
-}
-
-.wifi {
-  .icon.connected {
-    color: $green;
-  }
-}
-
-.tray image {
-   -gtk-icon-transform: scale(0.5); 
-  }
-
-
-scale trough {
-  background-color: $crust;
-  border-radius: 2px;
-  min-height: 5px;
-  min-width: 50px;
-}
-
-scale trough highlight {
-  background-color: $text;
-  border-radius: 2px;
-}
-
-scale.over trough highlight {
-  background-color: $peach;
-  border-radius: 2px;
+		&:last-child {
+			padding: unset;
+		}
+	}
 }

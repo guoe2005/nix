@@ -17,10 +17,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-
-
   networking.hostName = "nixos"; # Define your hostname.
-
 
  # networking.wireless.iwd.enable = true; #iwd
  #  networking.wireless.iwd.settings = {
@@ -41,7 +38,7 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-   #  Enable networking
+  #  Enable networking
   networking.networkmanager.enable = true;
   # networking.wireless.iwd.settings = {
   #   IPv6 = {
@@ -118,20 +115,20 @@
     extraGroups = [ "wheel" "networkmanager" "video" "storage" ];
     packages = with pkgs; [
       # calibre
-      foliate
+      # foliate
       nh
       # microsoft-edge
       zip
       firefox
+      polybar
       xclip
       v2raya
       fish
       gtypist
       unzip
-      dmenu
+      # dmenu
       # chromium
       obsidian
-      # v2raya
       zathura
       nnn
       # j4-dmenu-desktop
@@ -278,6 +275,9 @@
     fzf
     # fishPlugins.grc
     eww
+    pipewire
+    wireplumber
+    nwg-look
     grc
   ];
 
@@ -446,7 +446,7 @@
     '';
    }; 
   programs.waybar = {
-    enable = true;
+    enable = false;
     # package = pkgs.waybar.overrideAttrs (oldAttrs: {
     #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     # });

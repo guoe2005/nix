@@ -5,3 +5,5 @@ end
 function lg
   lazygit
 end
+
+
