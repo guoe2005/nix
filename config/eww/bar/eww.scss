@@ -1,230 +1,127 @@
-/* Created   by https://github.com/rxyhn 
-   Designed  by https://github.com/rxyhn
-   Maintaned by https://github.com/rxyhn
-*/
-
-// Global
-*{
+* {
   all: unset;
 }
 
-// Variable Color's
-$background: #1A1B26;
-$foreground: #A9B1D6;
+window {
+  background: #282828;
+  color: #ebdbb2;
+  font-size: 14px;
 
-$black: #24283B;
-$gray: #565F89;
-$red: #F7768E;
-$green: #73DACA;
-$yellow: #E0AF68;
-$blue: #7AA2F7;
-$magenta: #BB9AF7;
-$cyan: #7DCFFF;
-$white: $foreground;
-
-// EWW BAR
-.eww_bar{
-  background-color: $background;
-  padding: .3rem;
+  & > * {
+    margin: 3px;
+  }
+  font-family: "Terminus (TTF)";
 }
 
-// Launcher
-.launcher_icon{
-    color: $cyan;
-    font-family: "Font Awesome 6 Pro";
-    font-size: 1.7em;
-    padding: 1rem 0 1rem 0;
-}
-
-// Workspaces
-.works {
-font-family: "Font Awesome 6 Pro";
-padding: .2rem .7rem .2rem .7rem;
-background-color: $black;
-border-radius: 5px;
-}
-
-.0 , .01, .02, .03, .04, .05, .06,
-.011, .022, .033, .044, .055, .066{
-  margin: .55rem 0 .55rem 0;
-}
-
-/* Unoccupied */
-.0 {
-color: $gray;
-}
-
-/* Occupied */
-.01, .02, .03, .04, .05, .06 {
-  color: $gray;
-}
-
-/* Focused */
-.011,
-.022,
-.033,
-.044,
-.055,
-.066 {
-  color: $foreground;
-}
-
-.0:nth-child(1),
-.0:nth-child(3){
-  font-size: 1.5em;
-}
-.0:nth-child(2){
-  font-size: 1.4em;
-}
-.0:nth-child(4),
-.0:nth-child(5){
-  font-size: 1.6em;
-}
-.0:nth-child(6){
-  font-size: 1.7em;
-}
-.01,
-.011,
-.03,
-.033{
-  font-size: 1.5em;
-}
-.02,
-.022{
-  font-size: 1.4em;
-}
-.04,
-.05,
-.044,
-.055{
-  font-size: 1.6em;
-}
-.06,
-.066{
-  font-size: 1.7em;
-}
-
-// Control Panel
-.control {
-padding: .5rem;
-font-family: Material Icons;
-font-size: 1.6em;
-background-color: $black;
-border-radius: 5px;
-}
-.bat{
-  font-family: JetBrainsMono Nerd Font;
-  font-size: 1.2em;
-  padding-right: .5rem;
-  color: $blue;
-}
-.wifi-icon{
-  margin-bottom: .2rem;
-  color: $magenta;
-}
-.brightness-icon{
-  margin: .2rem 0 .2rem 0;
-  color: $yellow;
-}
-.volume-icon{
-  margin: .2rem 0 .2rem 0;
-  color: $green;
-}
-scale trough {
-  all: unset;
-  background-color: $background;
-  border-radius: 5px;
-  min-height: 80px;
-  min-width: 10px;
-  margin: .3rem 0 .3rem 0;
-}
-.bribar trough highlight {
-  background-color: $yellow;
-  border-radius: 5px;
-}
-.volbar trough highlight {
-  background-color: $green;
-  border-radius: 5px;
-}
-
-// Clock
-.time {
-  font-family: Comic Mono;
-  font-weight: bold;
-  font-size: 1.2em;
-  background-color: $black;
-  color: $white;
-  border-radius: 5px;
-  padding: .7rem 0 .5rem 0;
-  margin: .5rem 0 .5rem 0;
-}
-
-// Calendar
-.cal-box {
-  background-color: $black;
-  font-family: Comic Mono;
-  font-size: 1em;
-  font-weight: bold;
-
-  .cal-inner-box {
-      padding: 1rem 1rem .2rem;
-
-      .cal {
-          &.highlight {
-              padding: 10rem;
-          }
-
-          padding: .8rem .25rem 0rem;
-          margin-left: 10px;
-      }
+.workspaces {
+  button {
+    background: none;
+    margin: 3px;
+    padding-left: 1px;
+    &.inactive {
+      color: #888974;
+    }
+    &.active {
+      color: #8ec07c;
+    }
+    &.occupied {
+      font-size: 1.01rem;
+    }
+    &.empty {
+      font-size: 0.8rem;
+    }
   }
 }
 
-calendar:selected {
-  color: $blue;
+.segment-top {
+  margin-top: 10px;
 }
 
-calendar.header {
-color: $blue;
-font-weight: bold;
+.segment-bottom {
+  margin-bottom: 10px;
 }
 
-calendar.button {
-color: $magenta;
+.volume-metric {
+  background-color: #1d2021;
+  color: #ebdbb2;
+  padding: 0;
+
+  .volume-top > scale {
+    margin-bottom: 5px;
+  }
+
+  slider {
+    all: unset;
+  }
+
+  scale trough highlight {
+    all: unset;
+    //background-color: #8ec07c;
+    background-color: #665c54;
+    border-bottom-right-radius: 5px;
+  }
+  scale trough {
+    all: unset;
+    background-color: #1d2021;
+    min-width: 34px;
+    min-height: 2px;
+  }
 }
 
-calendar.highlight {
-color: $magenta;
-font-weight: bold;
+.large-symbol {
+  font-size: 0.8em;
 }
 
-calendar:indeterminate {
-color: $background;
+.metric {
+  background-color: #1d2021;
+  padding: 5px 2px;
+}
+.metric-icon {
+  font-family: "Font Awesome 6 Free";
+  font-size: 0.7em;
 }
 
-// Powermenu
-.powermenu {
-  font-family: feather;
-  font-size: 1.4em;
-  font-weight: bold;
+.time {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: #a89984;
 }
-.button-bspres, .button-reb, .button-lock,
-.button-quit, .button-off{
-  padding: .5rem .2rem .3rem .2rem;
+
+
+
+
+
+.music_popup {
+  all: unset;
+  background-color: #1d2021;
+  padding: 0px 20px;
+  margin: 0;
 }
-.button-off{
-  margin-bottom: .5rem;
-  color: $red;
-}
-.button-bspres{
-  color: $green;
-}
-.button-reb{
-  color: $yellow
-}
-.button-quit{
-  color: $magenta;
-}
-.button-lock{
-  color: $blue;
+
+// System Tray
+menu {
+	padding: 5px 5px;
+  background-color: #1d2021;
+
+	>menuitem {
+    font-size: 14px;
+		padding: 2px 5px;
+    //color: $foreground;
+
+		&:disabled label {
+			color: #928374;
+		}
+
+		&:hover {
+      background-color: #282828;
+		}
+	}
+
+	separator {
+		padding-top: 1px;
+
+		&:last-child {
+			padding: unset;
+		}
+	}
 }

@@ -21,11 +21,10 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
-
- # networking.wireless.iwd.enable = true; #iwd
- #  networking.wireless.iwd.settings = {
- #    General = { EnableNetworkConfiguration = true; };
- #  };
+  networking.wireless.iwd.enable = true; #iwd
+   networking.wireless.iwd.settings = {
+     General = { EnableNetworkConfiguration = true; };
+   };
  #  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
  #  networking.dhcpcd.enable = false;
  #  networking.useNetworkd = true;
@@ -41,7 +40,7 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-   #  Enable networking
+  #  Enable networking
   networking.networkmanager.enable = true;
   # networking.wireless.iwd.settings = {
   #   IPv6 = {
@@ -118,19 +117,20 @@
     extraGroups = [ "wheel" "networkmanager" "video" "storage" ];
     packages = with pkgs; [
       # calibre
-      foliate
+      # foliate
       nh
       # microsoft-edge
       zip
       firefox
+      polybar
       xclip
+      v2raya
       fish
       gtypist
       unzip
-      dmenu
+      # dmenu
       # chromium
       obsidian
-      # v2raya
       zathura
       nnn
       # j4-dmenu-desktop
@@ -143,7 +143,6 @@
       lazygit
       wofi
       ripgrep
-      kdePackages.kdeconnect-kde
     ];
   };
 
@@ -256,14 +255,14 @@
     nodejs
     wl-clipboard
     rustup
-    rust-analyzer
-    gnomeExtensions.dash-to-panel
+    # rust-analyzer
+    # gnomeExtensions.dash-to-panel
     clang
-    flat-remix-gnome
+    # flat-remix-gnome
     android-tools
     cmake
     gnumake
-    gnomeExtensions.ibus-tweaker
+    # gnomeExtensions.ibus-tweaker
     grim
     slurp
     iptsd
@@ -271,14 +270,18 @@
     rofi
     go
     inputs.nixvim.packages.${system}.default
-    fishPlugins.done
-    fishPlugins.fzf-fish
-    fishPlugins.forgit
-    fishPlugins.hydro
+    # fishPlugins.done
+    # fishPlugins.fzf-fish
+    # fishPlugins.forgit
+    # fishPlugins.hydro
     fzf
-    fishPlugins.grc
-    eww-wayland
+    # fishPlugins.grc
+    eww
+    pipewire
+    wireplumber
+    nwg-look
     grc
+    jmtpfs
   ];
 
 
@@ -308,8 +311,8 @@
   # };
   programs.light.enable = true;
 
-  #   security.polkit.enable = true;
-  #   security.pam.services.swaylock = { };
+  security.polkit.enable = true;
+  security.pam.services.swaylock = { };
 
   stylix = {
     enable = true;
@@ -330,9 +333,9 @@
     enable = true;
     #   # set the flake package
     #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     #   # make sure to also set the portal package, so that they are in sync
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   # Disable NetworkManager's internal DNS resolution
@@ -350,6 +353,7 @@
   #   enable = true;
   #   # package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
   # };
+
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
@@ -447,8 +451,15 @@
   programs.waybar = {
     enable = true;
     # package = pkgs.waybar.overrideAttrs (oldAttrs: {
+    enable = false;
+    # package = pkgs.waybar.overrideAttrs (oldAttrs: {#
     #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     # });
   };
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  ];
 }
 
