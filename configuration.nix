@@ -298,7 +298,7 @@
   #   src = ./nix/dwm-flexipatch;
   # };
 
-  # services.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -309,8 +309,8 @@
   # };
   programs.light.enable = true;
 
-  #   security.polkit.enable = true;
-  #   security.pam.services.swaylock = { };
+  security.polkit.enable = true;
+  security.pam.services.swaylock = { };
 
   stylix = {
     enable = true;
@@ -348,10 +348,7 @@
     "8.8.8.8"
     "8.8.4.4"
   ];
-  # programs.waybar = {
-  #   enable = true;
-  #   # package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
-  # };
+
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
@@ -452,7 +449,7 @@
     #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     # });
   };
-    programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
