@@ -300,10 +300,10 @@
 
     which-key = {
       enable = true;
-      registrations = {
-        "<leader>fg" = "Find Git files with telescope";
-        "<leader>fw" = "Find text with telescope";
-        "<leader>ff" = "Find files with telescope";
+      # registrations = {
+      #   "<leader>fg" = "Find Git files with telescope";
+      #   "<leader>fw" = "Find text with telescope";
+      #   "<leader>ff" = "Find files with telescope";
       };
     };
 
@@ -492,7 +492,7 @@
       servers = {
         # Average webdev LSPs
         # ts-ls.enable = true; # TS/JS
-        ts_ls.enable = true; # TS/JS
+        ts-ls.enable = true; # TS/JS
         cssls.enable = true; # CSS
         tailwindcss.enable = true; # TailwindCSS
         html.enable = true; # HTML
@@ -502,11 +502,11 @@
         vuels.enable = false; # Vue
         pyright.enable = true; # Python
         marksman.enable = true; # Markdown
-        nil_ls.enable = true; # Nix
+        nil-ls.enable = true; # Nix
         dockerls.enable = true; # Docker
         bashls.enable = true; # Bash
         clangd.enable = true; # C/C++
-        csharp_ls.enable = true; # C#
+        csharp-ls.enable = true; # C#
         yamlls.enable = true; # YAML
         ltex = {
           enable = true;
@@ -532,13 +532,13 @@
           autostart = true;
         };
 
-        lua_ls = { # Lua
+        lua-ls = { # Lua
           enable = true;
           settings.telemetry.enable = false;
         };
 
         # Rust
-        rust_analyzer = {
+        rust-analyzer = {
           enable = true;
           installRustc = true;
           installCargo = true;
@@ -796,7 +796,7 @@
       };
     };
 
-  };
+  
 
   extraConfigVim = ''
   '';

@@ -204,6 +204,7 @@ leafpad
     #   ibus-tweaker
     #   ibus-engines
     # ];
+    # type = "fcitx5";
     enabled = "fcitx5";
     # waylandFrontend = true;
     fcitx5.addons = with pkgs; [
@@ -250,7 +251,7 @@ leafpad
   # programs.npm.package = true;
 
   environment.systemPackages = with pkgs; [
-    gnome3.gnome-tweaks
+    gnome-tweaks
     # gnomeExtensions.gsconnect
     gcc
     nodejs
