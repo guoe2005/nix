@@ -27,6 +27,7 @@
     ./plenary.nix
     # ./telekasten.nix
     ./plugins.nix
+    ./lazy.nix
   ];
   colorschemes.dracula.enable = true;
   plugins.web-devicons.enable = true;
