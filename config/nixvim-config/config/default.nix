@@ -1,33 +1,15 @@
 {
   imports = [
-    ./lsp/default.nix
-    ./lsp/fidget.nix
-    ./lsp/ionide.nix
-    ./lsp/none-ls.nix
-    ./lsp/trouble.nix
-    ./utils/auto-pairs.nix
+      ./utils/auto-pairs.nix
     ./utils/autosave.nix
     ./utils/blankline.nix
-    ./utils/telescope.nix
-    ./utils/toggleterm.nix
-    ./utils/which-key.nix
     ./utils/wilder.nix
-    ./bufferline.nix
-    ./cmp.nix
-    ./git.nix
-    ./notify.nix
-    ./markview.nix
-    ./nvim-tree.nix
     ./options.nix
     ./treesitter.nix
     ./lightline.nix
-    ./lazygit.nix
-    ./neo-tree.nix
    # ./obsidian.nix
     ./plenary.nix
-    # ./telekasten.nix
     ./plugins.nix
-    ./neorg.nix
   ];
   colorschemes.dracula.enable = true;
   plugins.web-devicons.enable = true;
