@@ -40,6 +40,10 @@
       \   'tabline': 0
       \ }
       \ }
+    inoremap <C-l> <Right>
+    inoremap <C-j> <Down>
+    inoremap <C-k> <Up>
+    inoremap <C-h> <Left>
   '';
 
   globals.mapleader = " ";
@@ -240,7 +244,6 @@
       key = "<C-e>";
       action = "<CMD>q!<CR>";
     }
-
   ];
   extraConfigLua = ''
     vim.opt.conceallevel = 1

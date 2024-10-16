@@ -1,8 +1,7 @@
 {
-  plugins.vim-bbye = {
-    enable = true;
-  };
-  plugins.image = {
-    enable = true;
+  plugins = {
+    vim-bbye.enable = true;
+    image.enable = true;
+    neorg.enable = true;
   };
 }

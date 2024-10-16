@@ -27,7 +27,7 @@
  #  networking.dhcpcd.enable = false;
  #  networking.useNetworkd = true;
  #  networking.useDHCP = false;
- #
+ #      
 
   # networking.useDHCP = false;
   # networking.dhcpcd.enable = false;
@@ -114,10 +114,10 @@
     # shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" "video" "storage" ];
     packages = with pkgs; [
-      # calibre
+      calibre
       # foliate
       nh
-      # microsoft-edge
+      microsoft-edge
       zip
       firefox
       polybar
@@ -141,6 +141,8 @@
       lazygit
       wofi
       ripgrep
+      windows10-icons
+      zafiro-icons
     ];
   };
 
@@ -445,7 +447,7 @@
     '';
    }; 
   programs.waybar = {
-    enable = false;
+    enable = true;
     # package = pkgs.waybar.overrideAttrs (oldAttrs: {#
     #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     # });
@@ -455,5 +457,12 @@
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
   ];
+services.onlyoffice = {
+  enable = true;
+  hostname = "localhost";
+};
+
+services.nginx.virtualHosts."localhost".listen = [ { addr = "127.0.0.1"; port = 8080; } ];
+
 }
 
