@@ -143,6 +143,7 @@
       ripgrep
       windows10-icons
       zafiro-icons
+leafpad
     ];
   };
 
