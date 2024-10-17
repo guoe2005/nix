@@ -510,7 +510,8 @@
       };
       "<leader>uC" = {
         action = "colorscheme";
-        options.desc = "Colorscheme preview"; };
+        options.desc = "Colorscheme preview"; 
+      };
     };
   };
     # Todo comments
