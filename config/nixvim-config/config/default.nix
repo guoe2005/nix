@@ -1,13 +1,13 @@
 {
   imports = [
-      ./utils/auto-pairs.nix
+    ./utils/auto-pairs.nix
     ./utils/autosave.nix
     ./utils/blankline.nix
     ./utils/wilder.nix
     ./options.nix
     ./treesitter.nix
     ./lightline.nix
-   # ./obsidian.nix
+    # ./obsidian.nix
     ./plenary.nix
     ./plugins.nix
   ];
@@ -19,26 +19,26 @@
   extraConfigVim = ''
     autocmd BufRead,BufNewFile *.pl set filetype=prolog
     let g:lightline = {
-      \ 'enable': {
-      \   'tabline': 0
-      \ }
-      \ }
+    \ 'enable': {
+    \   'tabline': 0
+    \ }
+    \ }
     inoremap <C-l> <Right>
     inoremap <C-j> <Down>
     inoremap <C-k> <Up>
     inoremap <C-h> <Left>
-  '';
+    '';
 
   globals.mapleader = " ";
   keymaps = [
     # Global
     # Default mode is "" which means normal-visual-op
     {
-    # {
-    #   key = "<C-n>";
-    #   action = "<CMD>NvimTreeToggle<CR>";
-    #   options.desc = "Toggle NvimTree";
-    # }
+      # {
+      #   key = "<C-n>";
+      #   action = "<CMD>NvimTreeToggle<CR>";
+      #   options.desc = "Toggle NvimTree";
+      # }
       key = "<C-n>";
       action = "<CMD>Neotree<CR>";
       options.desc = "Toggle NeoTree";
@@ -222,16 +222,53 @@
       mode = "n";
       key = "<C-b>";
       action = "<CMD>BufferLineCycleNext<CR>";
-    }{
+    }
+    {
       mode = "n";
       key = "<C-e>";
       action = "<CMD>q!<CR>";
     }
+    {
+      mode = "n";
+      key = "<leader>fp";
+      action = "<cmd>Telescope projects<CR>";
+      options = {
+        desc = "Projects";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>sd";
+      action = "<cmd>Telescope diagnostics bufnr=0<cr>";
+      options = {
+        desc = "Document diagnostics";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>st";
+      action = "<cmd>TodoTelescope<cr>";
+      options = {
+        silent = true;
+        desc = "Todo (Telescope)";
+      };
+    }
   ];
   extraConfigLua = ''
     vim.opt.conceallevel = 1
-  --   require('telekasten').setup({
-  -- home = vim.fn.expand("~/Downloads/obsidian"), -- Put the name of your notes directory here
+    --   require('telekasten').setup({
+    -- home = vim.fn.expand("~/Downloads/obsidian"), -- Put the name of your notes directory here
     -- })
+    local telescope = require('telescope')
+    telescope.setup{
+      pickers = {
+        colorscheme = {
+          enable_preview = true
+        }
+      }
+    }
+
     '';
 }
