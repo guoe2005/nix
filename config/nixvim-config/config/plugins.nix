@@ -995,7 +995,7 @@
   -- }
        })  '';
 
-  colorschemes.oxocarbon.enable = true;
+  # colorschemes.oxocarbon.enable = true;
 
   # colorschemes.catppuccin = {
   #   enable = true;
