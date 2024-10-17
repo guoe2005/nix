@@ -271,7 +271,7 @@ leafpad
     mako
     rofi
     go
-    inputs.nixvim.packages.${system}.default
+    inputs.nixvim.packages.${pkgs.system}.default
     # fishPlugins.done
     # fishPlugins.fzf-fish
     # fishPlugins.forgit
