@@ -23,11 +23,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
-    nixvim.url = "path:./config/nixvim-config";
+    nixvim.url = "path:./config/ahwxorg";
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
+    # hyprland = {
+    #   url = "github:hyprwm/Hyprland";
+    # };
 
   };
 
