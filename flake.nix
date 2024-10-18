@@ -23,12 +23,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
-    nixvim.url = "path:/home/guoyi/nix/config/nixvim/elythh";
+    # nixvim.url = "path:/home/guoyi/nix/config/nixvim/MFangel";
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # hyprland = {
     #   url = "github:hyprwm/Hyprland";
     # };
-
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, ... }: {
@@ -51,10 +50,10 @@
             # 这里的 ryan 也得替换成你的用户名
             # 这里的 import 函数在前面 Nix 语法中介绍过了，不再赘述
             home-manager.users.guoyi = import ./home.nix;
- networking.firewall = rec {
-    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-    allowedUDPPortRanges = allowedTCPPortRanges;
-  };
+            # networking.firewall = rec {
+            #   allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+            #   allowedUDPPortRanges = allowedTCPPortRanges;
+            # };
 
             # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
             # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
