@@ -23,22 +23,20 @@
   networking.wireless.iwd.settings = {
     General = { EnableNetworkConfiguration = true; };
   };
+  networking.networkmanager.wifi.backend = "iwd";
   #  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
   #  networking.dhcpcd.enable = false;
   #  networking.useNetworkd = true;
   #  networking.useDHCP = false;
-  #      
-
   # networking.useDHCP = false;
   # networking.dhcpcd.enable = false;
   systemd.services.NetworkManager-wait-online.enable = true;
-  #Enables wireless support via wpa_supplicant.
   # networking.wireless.userControlled.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  #  Enable networking
+  # Enable networking
   networking.networkmanager.enable = true;
   # networking.wireless.iwd.settings = {
   #   IPv6 = {
@@ -323,7 +321,7 @@
   #   enable = true;
   #   wrapperFeatures.gtk = true;
   # };
-  programs.light.enable = true;
+  # programs.light.enable = true;
 
   security.polkit.enable = true;
   security.pam.services.swaylock = { };
@@ -353,7 +351,7 @@
   };
 
   # Disable NetworkManager's internal DNS resolution
-  networking.networkmanager.dns = "none";
+
 
   # These options are unnecessary when managing DNS ourselves
   # Configure DNS servers manually (this example uses Cloudflare and Google DNS)

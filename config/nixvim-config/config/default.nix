@@ -9,7 +9,6 @@
     ./utils/autosave.nix
     ./utils/blankline.nix
     ./utils/telescope.nix
-    ./utils/toggleterm.nix
     ./utils/which-key.nix
     ./utils/wilder.nix
     ./bufferline.nix
@@ -40,6 +39,10 @@
       \   'tabline': 0
       \ }
       \ }
+    inoremap <C-h> <Left>
+    inoremap <C-j> <Up>
+    inoremap <C-k> <Down>
+    inoremap <C-l> <Right>
   '';
 
   globals.mapleader = " ";

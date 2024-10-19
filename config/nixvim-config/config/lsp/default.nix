@@ -12,6 +12,12 @@
         nixd.enable = true;
         prolog-ls.enable = true;
         ruff-lsp.enable = true;
+        marksman.enable = true; # Markdown
+                rust_analyzer = {
+          enable = true;
+          installRustc = true;
+          installCargo = true;
+        };
       };
       keymaps.lspBuf = {
         "gd" = "definition";
