@@ -280,7 +280,7 @@
     mako
     rofi
     go
-    # inputs.nixvim.packages.${system}.default
+    inputs.nixvim.packages.${system}.default
     # fishPlugins.done
     # fishPlugins.fzf-fish
     # fishPlugins.forgit
