@@ -150,7 +150,7 @@
       # wpaperd
       # mpvpaper
       # swww
-
+      devbox
     ];
   };
 

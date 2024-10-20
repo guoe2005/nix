@@ -22,7 +22,7 @@
     ./lightline.nix
     ./lazygit.nix
     ./neo-tree.nix
-   # ./obsidian.nix
+    # ./obsidian.nix
     ./plenary.nix
     # ./telekasten.nix
     ./plugins.nix
@@ -35,26 +35,26 @@
   extraConfigVim = ''
     autocmd BufRead,BufNewFile *.pl set filetype=prolog
     let g:lightline = {
-      \ 'enable': {
-      \   'tabline': 0
-      \ }
-      \ }
+    \ 'enable': {
+    \   'tabline': 0
+    \ }
+    \ }
     inoremap <C-h> <Left>
     inoremap <C-j> <Up>
     inoremap <C-k> <Down>
     inoremap <C-l> <Right>
-  '';
+    '';
 
   globals.mapleader = " ";
   keymaps = [
     # Global
     # Default mode is "" which means normal-visual-op
     {
-    # {
-    #   key = "<C-n>";
-    #   action = "<CMD>NvimTreeToggle<CR>";
-    #   options.desc = "Toggle NvimTree";
-    # }
+      # {
+      #   key = "<C-n>";
+      #   action = "<CMD>NvimTreeToggle<CR>";
+      #   options.desc = "Toggle NvimTree";
+      # }
       key = "<C-n>";
       action = "<CMD>Neotree<CR>";
       options.desc = "Toggle NeoTree";
@@ -236,14 +236,77 @@
     }
     {
       mode = "n";
-      key = "<C-b>";
+      key = "<Leader>bn";
       action = "<CMD>BufferLineCycleNext<CR>";
     }
+    {
+      mode = "n";
+      key = "<Leader>tf";
+      action = "<Cmd>ToggleTerm direction=float<CR>";
+      options.desc = "Open floating terminal";
+    }
+    {
+      mode = "n";
+      key = "<Leader>th";
+      action = "<Cmd>ToggleTerm size=10 direction=horizontal<CR>";
+      options.desc = "Open terminal in horizontal split";
+    }
+    {
+      mode = "n";
+      key = "<Leader>tv";
+      action = "<Cmd>ToggleTerm size=80 direction=vertical<CR>";
+      options.desc = "Open terminal in vertical split";
+    }
+    {
+      mode = "n";
+      key = "<F7>";
+      action = "<Cmd>execute v:count . 'ToggleTerm'<CR>";
+      options.desc = "Toggle terminal";
+    }
+    {
+      mode = "t";
+      key = "<F7>";
+      action = "<Cmd>ToggleTerm<CR>";
+      options.desc = "Toggle terminal";
+    }
+    {
+      mode = "i";
+      key = "<F7>";
+      action = "<Esc><Cmd>ToggleTerm<CR>";
+      options.desc = "Toggle terminal";
+    }
+    {
+      mode = "t";
+      key = "<Esc><Esc>";
+      action = "<C-\\><C-n>";
+      options.desc = "Switch to normal mode";
+    }
+    {
+      mode = [ "n" "t" ];
+      key = "<Leader>tn";
+      action.__raw = ''
+        function()
+          local curterm = require("toggleterm.terminal").get_focused_id()
+
+          if curterm ~= nil then
+            vim.cmd(curterm .. "ToggleTermSetName")
+          end
+        end
+        '';
+      options.desc = "Rename current terminal";
+    }
+    {
+      mode = [ "n" "t" ];
+      key = "<Leader>tl";
+      action = "<cmd>TermSelect<cr>";
+      options.desc = "List terminals";
+    }
+
   ];
   extraConfigLua = ''
     vim.opt.conceallevel = 1
-  --   require('telekasten').setup({
-  -- home = vim.fn.expand("~/Downloads/obsidian"), -- Put the name of your notes directory here
+    --   require('telekasten').setup({
+    -- home = vim.fn.expand("~/Downloads/obsidian"), -- Put the name of your notes directory here
     -- })
     '';
 }

@@ -26,14 +26,39 @@
       enable = true;
     };
     toggleterm = {
-      enable = true;
-      settings = {
-        hide_numbers = false;
-        autochdir = true;
-        close_on_exit = true;
-        # direction = "hori";
-        open_mapping = "[[<C-t>]]"; 
-      };
+        enable = true;
+
+        settings = {
+          direction = "float";
+          float_opts.border = "rounded";
+          shading_factor = 2;
+          size = 10;
+
+          highlights = {
+            Normal.link = "Normal";
+            NormalNC.link = "NormalNC";
+            NormalFloat.link = "NormalFloat";
+            FloatBorder.link = "FloatBorder";
+            StatusLine.link = "StatusLine";
+            StatusLineNC.link = "StatusLineNC";
+            WinBar.link = "WinBar";
+            WinBarNC.link = "WinBarNC";
+          };
+
+        #   # https://github.com/AstroNvim/AstroNvim/blob/v4.7.7/lua/astronvim/plugins/toggleterm.lua#L66-L74
+        #   on_create = ''
+        # function(t)
+        #   vim.opt_local.foldcolumn = "0"
+        #   vim.opt_local.signcolumn = "no"
+        #   if t.hidden then
+        #     vim.keymap.set({ "n", "t", "i" }, "<F7>", function() t:toggle() end, { desc = "Toggle terminal", buffer = t.bufnr })
+        #   end
+        #   local term_name = rndname()
+        #   vim.cmd(t.id .. "ToggleTermSetName " .. term_name)
+        # end
+        #   '';
+        };
+
     };
     # render-markdown = {
     #   enable = true;
@@ -138,26 +163,26 @@
       glow-nvim # Glow inside of Neovim
       clipboard-image-nvim
     ];
-    # ++ [
-    #   (pkgs.vimUtils.buildVimPlugin {
-    #     pname = "markview.nvim";
-    #     version = "0.0.1";
-    #     src = pkgs.fetchFromGitHub {
-    #       owner = "OXY2DEV";
-    #       repo = "markview.nvim";
-    #       rev = "a959d77ca7e9f05175e3ee4e582db40b338c9164";
-    #       hash = "sha256-w6yn8aNcJMLRbzaRuj3gj4x2J/20wUROLM6j39wpZek=";
-    #     };
-    #   })
-    #   # Just copy this block for a new plugin
-    #   # (pkgs.vimUtils.buildVimPlugin {
-    #   #   pname = "";
-    #   #   src = pkgs.fetchFromGitHub {
-    #   #     owner = "";
-    #   #     repo = "";
-    #   #     rev = "";
-    #   #     sha256 = "";
-    #   #   };
-    #   # })
-    # ];
+  # ++ [
+  #   (pkgs.vimUtils.buildVimPlugin {
+  #     pname = "markview.nvim";
+  #     version = "0.0.1";
+  #     src = pkgs.fetchFromGitHub {
+  #       owner = "OXY2DEV";
+  #       repo = "markview.nvim";
+  #       rev = "a959d77ca7e9f05175e3ee4e582db40b338c9164";
+  #       hash = "sha256-w6yn8aNcJMLRbzaRuj3gj4x2J/20wUROLM6j39wpZek=";
+  #     };
+  #   })
+  #   # Just copy this block for a new plugin
+  #   # (pkgs.vimUtils.buildVimPlugin {
+  #   #   pname = "";
+  #   #   src = pkgs.fetchFromGitHub {
+  #   #     owner = "";
+  #   #     repo = "";
+  #   #     rev = "";
+  #   #     sha256 = "";
+  #   #   };
+  #   # })
+  # ];
 }
