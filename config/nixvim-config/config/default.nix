@@ -50,16 +50,6 @@
     # Global
     # Default mode is "" which means normal-visual-op
     {
-      # {
-      #   key = "<C-n>";
-      #   action = "<CMD>NvimTreeToggle<CR>";
-      #   options.desc = "Toggle NvimTree";
-      # }
-      key = "<C-n>";
-      action = "<CMD>Neotree<CR>";
-      options.desc = "Toggle NeoTree";
-    }
-    {
       key = "<leader>c";
       action = "+context";
     }

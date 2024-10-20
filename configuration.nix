@@ -11,12 +11,57 @@
       ./etc/hosts.nix
       ./hardware-configuration.nix
     ];
-
+# boot.kernelPackages = pkgs.linuxPackages_6_6;
+#   boot.kernelPatches = [ {
+#     name = "linux-surface-config";
+#     patch = null;
+#     extraStructuredConfig = with lib.kernel; {
+#       STAGING_MEDIA = yes;
+#       FUNCTION_ERROR_INJECTION = yes;
+#     };
+#     extraConfig = lib.replaceStrings [ "CONFIG_" "=" ] [ "" " " ] (lib.readFile
+#       /home/guoyi/linux-surface/configs/surface-6.6.config
+#     );
+#   } ] ++ map (pname: {
+#     name = "linux-surface-${pname}";
+#     patch = /home/guoyi/linux-surface/patches/6.6/${pname}.patch;
+#   }) [
+#     # "0001-surface3-oemb"
+#     "0002-mwifiex"
+#     # "0003-ath10k"
+#     "0004-ipts"
+#     "0005-ithc"
+#     # "0006-surface-sam-over-hid"
+#     # "0007-surface-button"
+#     "0009-surface-typecover"
+#     # "0009-surface-shutdown"
+#     # "0010-surface-gpe"
+#     "0012-cameras"
+#     # "0012-amd-gpio"
+#     # "0013-rtc"
+#   ];
+  # environment.systemPackages = with pkgs; [
+  #   surface-control
+  # ];
+  # services.udev.packages = [
+  #   pkgs.iptsd
+  #   pkgs.surface-control
+  # ];
+  # systemd.packages = [
+  #   pkgs.iptsd
+  # ];
+  #
+  # nixpkgs.overlays = [
+  #   (self: super: {
+  #     libwacom = self.callPackage (self.path + "/pkgs/development/libraries/libwacom/surface.nix") {
+  #       inherit (super) libwacom;
+  #     };
+  #   })
+  # ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
   networking.hostName = "nixos"; # Define your hostname.
 
   networking.wireless.iwd.enable = true; #iwd
