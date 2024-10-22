@@ -1,11 +1,67 @@
 {pkgs,...}:
 {
   plugins={
+    tmux-navigator = {
+      enable = true;
+      keymaps = [
+        {
+          action = "left";
+          key = "<C-w>h";
+        }
+        {
+          action = "down";
+          key = "<C-w>j";
+        }
+        {
+          action = "up";
+          key = "<C-w>k";
+        }
+        {
+          action = "right";
+          key = "<C-w>l";
+        }
+        {
+          action = "previous";
+          key = "<C-n>";
+        }
+      ];
+    };
+
     vim-bbye = {
       enable = true;
     };
     web-devicons.enable = true;
     persistence.enable = true;
+
+  oil = {
+      enable = true;
+    };
+
+  trouble = {
+    enable = true;
+  };
+
+    alpha = {
+      enable = true;
+      theme = "dashboard";
+      # iconsEnabled = true; # Deprecated
+    };
+
+    illuminate = {
+      enable = true;
+      underCursor = false;
+      filetypesDenylist = [
+        "Outline"
+        "TelescopePrompt"
+        "alpha"
+        "harpoon"
+        "reason"
+      ];
+    };
+
+   neoscroll = {
+      enable = true;
+    };
 
     lint = {
       enable = true;
@@ -128,7 +184,7 @@
 
     # Prettier fancier command window
     noice = {
-      enable = true;
+      enable = false;
     };
     nvim-snippets = {
       enable = false;
@@ -185,4 +241,10 @@
   #   #   };
   #   # })
   # ];
+
+  extraConfigLuaPre = ''
+    if vim.g.have_nerd_font then
+      require('nvim-web-devicons').setup {}
+    end
+  '';
 }

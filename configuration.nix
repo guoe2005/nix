@@ -11,95 +11,24 @@
       ./etc/hosts.nix
       ./hardware-configuration.nix
     ];
-# boot.kernelPackages = pkgs.linuxPackages_6_6;
-#   boot.kernelPatches = [ {
-#     name = "linux-surface-config";
-#     patch = null;
-#     extraStructuredConfig = with lib.kernel; {
-#       STAGING_MEDIA = yes;
-#       FUNCTION_ERROR_INJECTION = yes;
-#     };
-#     extraConfig = lib.replaceStrings [ "CONFIG_" "=" ] [ "" " " ] (lib.readFile
-#       /home/guoyi/linux-surface/configs/surface-6.6.config
-#     );
-#   } ] ++ map (pname: {
-#     name = "linux-surface-${pname}";
-#     patch = /home/guoyi/linux-surface/patches/6.6/${pname}.patch;
-#   }) [
-#     # "0001-surface3-oemb"
-#     "0002-mwifiex"
-#     # "0003-ath10k"
-#     "0004-ipts"
-#     "0005-ithc"
-#     # "0006-surface-sam-over-hid"
-#     # "0007-surface-button"
-#     "0009-surface-typecover"
-#     # "0009-surface-shutdown"
-#     # "0010-surface-gpe"
-#     "0012-cameras"
-#     # "0012-amd-gpio"
-#     # "0013-rtc"
-#   ];
-  # environment.systemPackages = with pkgs; [
-  #   surface-control
-  # ];
-  # services.udev.packages = [
-  #   pkgs.iptsd
-  #   pkgs.surface-control
-  # ];
-  # systemd.packages = [
-  #   pkgs.iptsd
-  # ];
-  #
-  # nixpkgs.overlays = [
-  #   (self: super: {
-  #     libwacom = self.callPackage (self.path + "/pkgs/development/libraries/libwacom/surface.nix") {
-  #       inherit (super) libwacom;
-  #     };
-  #   })
-  # ];
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
   networking.hostName = "nixos"; # Define your hostname.
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  networking.wireless.iwd.enable = true; #iwd
-  networking.wireless.iwd.settings = {
-    General = { EnableNetworkConfiguration = true; };
+  networking.wireless = {
+    enable = true;
+    userControlled = {
+      enable = true;
+      # group = "network";
+    };
+    interfaces = [ "wlp1s0" ];
+    networks = {
+      "9" = { psk = "11111111"; };
+    };
   };
-  networking.networkmanager.wifi.backend = "iwd";
-  #  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
-  #  networking.dhcpcd.enable = false;
-  #  networking.useNetworkd = true;
-  #  networking.useDHCP = false;
-  # networking.useDHCP = false;
-  # networking.dhcpcd.enable = false;
-  systemd.services.NetworkManager-wait-online.enable = true;
-  # networking.wireless.userControlled.enable = true; # Enables wireless support via wpa_supplicant.
+  # networking.interfaces.wlp1s0.useDHCP = true;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  # Enable networking
-  networking.networkmanager.enable = true;
-  # networking.wireless.iwd.settings = {
-  #   IPv6 = {
-  #     Enable = true;
-  #   };
-  #   Settings = {
-  #     AutoConnect = true;
-  #   };
-  # };
-  # system.activationScripts = {
-  #   rfkillUnblockWlan = {
-  #     text = ''
-  #       rfkill unblock wlan
-  #     '';
-  #     deps = [ ];
-  #   };
-  # };
-  # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
   # Select internationalisation properties.
@@ -182,7 +111,7 @@
       # python3
       rofi-wayland
       mpv
-      alacritty
+      # alacritty
       # nix-output-monitor
       lazygit
       wofi
@@ -194,8 +123,13 @@
       # swaybg
       # wpaperd
       # mpvpaper
-      # swww
+       swww
+      # material-symbols
+      # material-design-icons
       devbox
+      ags
+      # faba-icon-theme
+      gthumb
     ];
   };
 
@@ -320,7 +254,7 @@
     grim
     slurp
     iptsd
-    mako
+    # mako
     rofi
     go
     inputs.nixvim.packages.${system}.default
@@ -340,7 +274,6 @@
     # dunst
     # libnotify
   ];
-
 
   # Enable the Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
@@ -527,5 +460,13 @@
   #   enable = true;
   #   extraPortals = [pkgs.xdg-desktop-portal-gtk];
   # };
+  nixpkgs.overlays = [
+    (final: prev:
+    {
+      ags = prev.ags.overrideAttrs (old: {
+        buildInputs = old.buildInputs ++ [ pkgs.libdbusmenu-gtk3 ];
+      });
+    })
+  ];
+# powerManagement.resumeCommands = "${systemctl} try-restart wpa_supplicant";
 }
-

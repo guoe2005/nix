@@ -1,6 +1,6 @@
 {
   plugins.obsidian = {
-    enable = true;
+    enable = false;
     settings = {
       dir="~/obsidian";
       completion = {

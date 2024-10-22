@@ -22,10 +22,13 @@
     ./lightline.nix
     ./lazygit.nix
     ./neo-tree.nix
-    # ./obsidian.nix
+    ./obsidian.nix
     ./plenary.nix
     # ./telekasten.nix
     ./plugins.nix
+    ./orgmode.nix
+    ./fcitx.nix
+    ./neorg.nix
   ];
   colorschemes.dracula.enable = true;
   plugins.web-devicons.enable = true;
@@ -294,9 +297,21 @@
 
   ];
   extraConfigLua = ''
-    vim.opt.conceallevel = 1
+    vim.opt.conceallevel = 2
+    vim.opt.concealcursor = 'nc'
+
     --   require('telekasten').setup({
     -- home = vim.fn.expand("~/Downloads/obsidian"), -- Put the name of your notes directory here
+    -- })
+    -- require("neorg").setup({
+    --   load = {
+    --     ["core.defaults"] = {},
+    --     ["core.concealer"] = {
+    --       config = { -- We added a `config` table!
+    --         icon_preset = "varied", -- And we set our option here.
+    --       },
+    --     },
+    --   }
     -- })
     '';
 }
