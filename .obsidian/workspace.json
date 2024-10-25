@@ -1,0 +1,165 @@
+{
+  "main": {
+    "id": "b813ff08d0d362fc",
+    "type": "split",
+    "children": [
+      {
+        "id": "b842524a337724ad",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5c14c992b5bdcf39",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "lib/pics/Desert-Background-Download-Free.jpg"
+              },
+              "icon": "lucide-image",
+              "title": "Desert-Background-Download-Free"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4b202c803d468858",
+    "type": "split",
+    "children": [
+      {
+        "id": "c33d26b6bf5e9981",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5d26264871b3c79c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "224948862b1edb5f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "453ee55fa6327698",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "2316dddc41f737a2",
+    "type": "split",
+    "children": [
+      {
+        "id": "fba4c43980d9efbc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7fd2a9426c905ed7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "lib/pics/Desert-Background-Download-Free.jpg",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Desert-Background-Download-Free 的反向链接列表"
+            }
+          },
+          {
+            "id": "3f83c7c6ea7498f3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "lib/pics/Desert-Background-Download-Free.jpg",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Desert-Background-Download-Free 的出链列表"
+            }
+          },
+          {
+            "id": "e856397d8c08c101",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "c07237af44bf44ea",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "lib/pics/Desert-Background-Download-Free.jpg"
+              },
+              "icon": "lucide-list",
+              "title": "Desert-Background-Download-Free 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "5c14c992b5bdcf39",
+  "lastOpenFiles": []
+}

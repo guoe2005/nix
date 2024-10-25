@@ -1,6 +1,6 @@
 {
   plugins.orgmode = {
-    enable = false;
+    enable = true;
     settings = {
       org_agenda_files = "~/obsidian/orgfiles/**/*";
       org_default_notes_file = "~/obsidian/orgfiles/refile.org";
