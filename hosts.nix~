@@ -1,0 +1,19 @@
+{
+  networking.extraHosts = ''
+ 
+151.101.42.217  cache.nixos.org
+151.101.110.217  cache.nixos.org
+199.232.46.217  cache.nixos.org
+146.75.122.217  cache.nixos.org
+151.101.78.217  cache.nixos.org
+
+# GitHub520 Host Start
+
+ 140.82.113.4    github.com
+    140.82.114.4    github.com
+    140.82.112.4    github.com
+    140.82.113.4    api.github.com
+    185.199.108.153 assets-cdn.github.com
+    185.199.109.153 raw.githubusercontent.com
+'';
+}
