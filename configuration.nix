@@ -1,9 +1,5 @@
-{ config, pkgs, ... }:
-{
-  imports = [
-    ./hardware-configuration.nix
-    ./hosts.nix
-  ];
+{ config, pkgs, ... }: {
+  imports = [ ./hardware-configuration.nix ./hosts.nix ];
 
   # Boot Configuration
   boot = {
@@ -22,8 +18,8 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 53317 ]; # LocalSend
-      allowedUDPPorts = [ 53317 ]; # LocalSend
+      allowedTCPPorts = [ 53317 8384 2200 ]; # LocalSend
+      allowedUDPPorts = [ 53317 22000 2102 ]; # LocalSend
     };
   };
 
@@ -32,10 +28,7 @@
   #   networks."Redmi_142A".psk = "6ypcla2p";
   # };
   hardware.enableRedistributableFirmware = true;
-  hardware.firmware = with pkgs; [
-    wireless-regdb
-    linux-firmware
-  ];
+  hardware.firmware = with pkgs; [ wireless-regdb linux-firmware ];
 
   hardware.bluetooth = {
     enable = true;
@@ -77,12 +70,6 @@
     pulse.enable = true;
   };
 
-  # Printing
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.gutenprint ];
-  };
-
   services.xserver = {
     enable = true;
     desktopManager.cinnamon.enable = true;
@@ -93,15 +80,9 @@
   users.users.guoyi = {
     isNormalUser = true;
     description = "guoyi";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "storage" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" "storage" "lp" ];
     shell = pkgs.zsh; # Consider using zsh with oh-my-zsh
-    packages = with pkgs; [
-      git
-      vim
-      wget
-      curl
-      htop
-    ];
+    packages = with pkgs; [ git vim wget curl htop ];
   };
 
   # System Packages
@@ -128,6 +109,29 @@
     clang-tools # C/C++ LSP
     gopls
     terraform-ls
+    nil
+    alejandra
+    black # python
+    nixfmt-classic
+    gammastep
+    sqlite
+
+    nnn
+    ueberzug # 图片预览支持
+    bat # 语法高亮预览
+    ffmpegthumbnailer # 视频缩略图
+    poppler_utils # pdf预览
+    mediainfo # 多媒体信息
+
+    # --- 强烈推荐同时安装以下工具，它们能极大地增强 nnn 的体验： ---
+    fzf # 用于 nnn 的模糊查找 (例如，按 'd' 进入目录选择模式)
+    # chafa             # 将图片转换为 ASCII 艺术或 Unicode 字符画，用于在终端中预览图片
+    trash-cli # 移动文件到回收站而不是直接删除
+    fd # 更好的 find 命令
+    ripgrep # 更好的 grep 命令
+    # xsel              # 或 xclip，用于复制粘贴到系统剪贴板 (X11)
+    # highlight         # 另一个代码高亮工具
+    exiftool # 图片和视频的 EXIF 元数据查看
   ];
 
   services.flatpak.enable = true;
@@ -161,8 +165,6 @@
     settings.auto-optimise-store = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   # System Services
   services = {
     openssh.enable = true;
@@ -194,20 +196,17 @@
 
     # Emacs 特定设置
     EMACS_USE_EGL = "1";
+    EMACSDIR = "$HOME/.config/emacs";
+
   };
 
-  security.sudo.extraRules = [
-    {
-      users = [ "guoyi" ]; # 替换为你的用户名
-      commands = [
-        {
-          command = "ALL"; # 允许所有命令
-          options = [ "NOPASSWD" ]; # 免密码
-        }
-      ];
-    }
-  ];
-
+  security.sudo.extraRules = [{
+    users = [ "guoyi" ]; # 替换为你的用户名
+    commands = [{
+      command = "ALL"; # 允许所有命令
+      options = [ "NOPASSWD" ]; # 免密码
+    }];
+  }];
 
   # 系统级电源管理
   powerManagement.enable = true;
@@ -222,12 +221,12 @@
   # 允许普通用户挂载指定设备
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
-      if (
-        action.id == "org.freedesktop.udisks2.filesystem-mount-system" &&
-        subject.isInGroup("storage")
-      ) {
-        return polkit.Result.YES;
-      }
+    if (
+    action.id == "org.freedesktop.udisks2.filesystem-mount-system" &&
+    subject.isInGroup("storage")
+    ) {
+    return polkit.Result.YES;
+    }
     });
   '';
 
@@ -249,6 +248,39 @@
       "umask=022"
       "nofail" # 忽略启动错误
     ];
+  };
+  hardware.graphics.enable = true;
+  services.geoclue2 = {
+    enable = true;
+    # 允许 redshift/gammastep 访问位置
+    appConfig."gammastep" = {
+      isAllowed = true;
+      isSystem = false;
+      users = [ "guoyi" ];
+    };
+  };
+
+  # Printing
+  # services.printing = {
+  #   enable = true;
+  #   drivers = [ pkgs.gutenprint ];
+  # };
+
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.cnijfilter2 ];
+  }; # Canon 官方驱动
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true; # 支持网络发现
+  };
+
+  # 启用 Syncthing 服务
+  services.syncthing = {
+    enable = true;
+    user = "guoyi"; # 替换为你的用户名
+    dataDir = "/home/guoyi/Sync"; # 同步目录（可选自定义）
+    # configDir = "/home/.config/syncthing"; # 配置文件目录
   };
 
 }

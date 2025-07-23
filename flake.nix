@@ -1,96 +1,88 @@
 {
-  description = "Guoyi's NixOS Configuration";
-
-  nixConfig = {
-    extra-experimental-features = [ "nix-command" "flakes" ];
-    # Other nix config...
-  };
-
   inputs = {
-    # NixOS unstable channel
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Stylix theming
     stylix.url = "github:danth/stylix";
 
-    # Hyprland (if using Wayland)
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      flake = false;
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim.url = "github:nix-community/nixvim";
-
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, hyprland, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+  outputs =
+    { self, nixpkgs, home-manager, stylix, hyprland, nixvim, ... }@inputs:
+    let
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; }; # Pass all inputs to modules
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true; # Allow unfree packages globally
+          # Alternatively, allow only specific packages:
+          # allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["cnijfilter2"];
+        };
+      };
+    in {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
 
-      modules = [
-        # Main configuration (now in your home directory)
-        ./configuration.nix
+        modules = [
+          ./configuration.nix
 
-        # Home Manager integration
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.guoyi = import ./home.nix;
-            extraSpecialArgs = { inherit inputs; };
-          };
-        }
-
-        # Stylix theming
-        stylix.nixosModules.stylix
-
-        # Hyprland (optional)
-        # hyprland.nixosModules.default
-        # { programs.hyprland.enable = true; }
-
-        # Additional hardware settings
-        ({ config, pkgs, ... }: {
-          nix = {
-            # Enable flakes and new CLI commands
-            package = pkgs.nixVersions.stable;
-            extraOptions = ''
-              experimental-features = nix-command flakes
-              keep-outputs = true
-              keep-derivations = true
-            '';
-
-            # Garbage collection
-            gc = {
-              automatic = true;
-              dates = "weekly";
-              options = "--delete-older-than 3d";
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.guoyi = import ./home.nix;
+              extraSpecialArgs = { inherit inputs pkgs; };
             };
+          }
 
-            settings = {
-              auto-optimise-store = true;
-              trusted-users = [ "root" "guoyi" ];
-              substituters = [
-                "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-                #       "https://cache.nixos.org"
-                #      "https://nix-community.cachix.org"
-              ];
-              trusted-public-keys = [
-                "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-              ];
+          stylix.nixosModules.stylix
+
+          # Hyprland   
+          hyprland.nixosModules.default
+          {
+            programs.hyprland = {
+              enable = true;
+              package = inputs.hyprland.packages.${system}.default;
             };
-          };
-        })
-      ];
+          }
+
+          # Nix     
+          ({ config, lib, ... }: {
+            # nix = {
+            #   package = pkgs.nixVersions.stable;
+            #   settings = {
+            #     experimental-features = [ "nix-command" "flakes" ];
+            #     auto-optimise-store = true;
+            #     trusted-users = [ "root" "guoyi" ];
+            #   };
+            #   gc = {
+            #     automatic = true;
+            #     dates = "weekly";
+            #     options = "--delete-older-than 3d";
+            #   };
+            nixpkgs.pkgs = pkgs; # 使用预先配置好的 pkgs
+            # imports = [
+            #   # "${nixpkgs}/nixos/modules/misc/nixpkgs/read-only.nix"
+            #   # 或者使用 flake 方式：
+            #   nixpkgs.nixosModules.readOnlyPkgs
+            # ];
+          })
+        ];
+      };
     };
-  };
 }

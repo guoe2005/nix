@@ -1,9 +1,9 @@
 {
-networking.extraHosts = ''
-151.101.42.217  cache.nixos.org
-151.101.110.217  cache.nixos.org
-199.232.46.217  cache.nixos.org
-146.75.122.217  cache.nixos.org
-151.101.78.217  cache.nixos.org
-'';
+  networking.extraHosts = ''
+    151.101.42.217  cache.nixos.org
+    151.101.110.217  cache.nixos.org
+    199.232.46.217  cache.nixos.org
+    146.75.122.217  cache.nixos.org
+    151.101.78.217  cache.nixos.org
+  '';
 }
